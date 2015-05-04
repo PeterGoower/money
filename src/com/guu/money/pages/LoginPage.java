@@ -12,6 +12,7 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
@@ -22,13 +23,15 @@ import android.widget.TextView;
 
 
 
-public class LoginPage extends Activity {
+public class LoginPage extends Activity implements OnClickListener{
 	public static final int ANI_SHOW_USER = 0;
 	public static final int ANI_SHOW_PSW = 1;
 	public static final int ANI_SHOW_LOGIN = 2;
 	public static final int ANI_SHOW_MORE = 3;
+	public static final int ANI_SHOW_SWITCH = 4;
 	
 	private int currAniStatus = -1;
+	private boolean btnSwitch = true;
 	private Timer timer;
 	
 	private Button login;
@@ -36,6 +39,7 @@ public class LoginPage extends Activity {
 	private RelativeLayout pswZone;
 	private LinearLayout moreZone;
 	private TextView intro;
+	private TextView regi;
 	
 	
     
@@ -52,9 +56,11 @@ public class LoginPage extends Activity {
         pswZone = (RelativeLayout)this.findViewById(R.id.psw_zone);
         moreZone = (LinearLayout)this.findViewById(R.id.more_zone);
         intro = (TextView)this.findViewById(R.id.intro);
+        regi = (TextView)this.findViewById(R.id.btn_regi);
+        regi.setOnClickListener(this);
 
         timer = new Timer(true);
-		timer.schedule(task, 2000, 200); 
+		timer.schedule(task, 2000, 150); 
     }
     
     private TimerTask task = new TimerTask(){  
@@ -90,28 +96,53 @@ public class LoginPage extends Activity {
 		ani.setInterpolator(this, android.R.anim.accelerate_interpolator);//…Ë÷√∂Øª≠≤Â»Î∆˜
 		ani.setFillAfter(true);
         if(currAniStatus == ANI_SHOW_USER){
-        	ani.setDuration(200);
+        	ani.setDuration(150);
             userZone.startAnimation(ani);
             userZone.setVisibility(View.VISIBLE);
             intro.setVisibility(View.INVISIBLE);
         }
         
         if(currAniStatus == ANI_SHOW_PSW){
-        	ani.setDuration(200);
+        	ani.setDuration(150);
             pswZone.startAnimation(ani);
             pswZone.setVisibility(View.VISIBLE);
         }
         
         if(currAniStatus == ANI_SHOW_LOGIN){
-        	ani.setDuration(200);
+        	ani.setDuration(150);
             login.startAnimation(ani);
             login.setVisibility(View.VISIBLE);
         }
 
         if(currAniStatus == ANI_SHOW_MORE){
-        	ani.setDuration(200);
+        	ani.setDuration(150);
             moreZone.startAnimation(ani);
             moreZone.setVisibility(View.VISIBLE);
         }
+        if(currAniStatus == ANI_SHOW_SWITCH){
+        	ani.setInterpolator(this, android.R.anim.anticipate_interpolator);
+        	ani.setDuration(150);
+        	login.startAnimation(ani);
+        }
+	}
+
+	@Override
+	public void onClick(View v) {
+		int id = v.getId();
+		if(id == R.id.btn_regi){
+			
+			currAniStatus = ANI_SHOW_SWITCH;
+			showLoginAni();
+			if(btnSwitch == true){
+				btnSwitch = false;
+				regi.setText(R.string.login);
+				login.setText(R.string.register);
+			}else{
+				btnSwitch = true;
+				regi.setText(R.string.register);
+				login.setText(R.string.login);
+			}
+		}
+		
 	}
 }

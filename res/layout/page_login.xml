@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray" >
+    android:background="@color/app" >
     <ImageView 
         android:id="@+id/logo"
         android:src="@drawable/logo_mid"
@@ -48,7 +48,7 @@
         <View
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="1px"
+            android:layout_height="3px"
             android:background="@color/white">     
         </View>
         <ImageView 
@@ -86,7 +86,7 @@
         <View
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="1px"
+            android:layout_height="3px"
             android:background="@color/white">     
         </View>
         <ImageView 
@@ -111,7 +111,7 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:gravity="center"
-        android:background="@drawable/button_gray">     
+        android:background="@drawable/button_app">     
     </Button>
     <LinearLayout 
         android:id="@+id/more_zone"
@@ -122,38 +122,35 @@
         android:orientation="horizontal"
         android:visibility="invisible"
         android:layout_below="@id/btn_login"> 
-        <Button 
+        <TextView 
             android:id="@+id/btn_forget"
-            android:padding="10dp"
+            android:padding="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/psw_forget"
             android:textColor="@color/hint_white"
             android:textSize="18sp"
-            android:gravity="center"
-            android:background="@null">     
-        </Button>
+            android:gravity="center">     
+        </TextView>
         <TextView 
             android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="|"
+            android:text=" | "
             android:textColor="@color/hint_white"
             android:textSize="18sp"
-            android:gravity="center"
-            android:background="@null">     
+            android:gravity="center">     
         </TextView>
-        <Button 
+        <TextView 
             android:id="@+id/btn_regi"
-            android:padding="10dp"
+            android:padding="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register"
             android:textColor="@color/hint_white"
             android:textSize="18sp"
-            android:gravity="center"
-            android:background="@null">     
-        </Button>
+            android:gravity="center">     
+        </TextView>
     </LinearLayout>
     
 </RelativeLayout>
