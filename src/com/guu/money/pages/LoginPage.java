@@ -5,12 +5,9 @@ import java.util.TimerTask;
 import com.guu.money.R;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -30,7 +27,7 @@ public class LoginPage extends Activity implements OnClickListener{
 	public static final int ANI_SHOW_MORE = 3;
 	public static final int ANI_SHOW_SWITCH = 4;
 	
-	private int currAniStatus = -1;
+	private int currAniStatus = 0;
 	private boolean btnSwitch = true;
 	private Timer timer;
 	
@@ -40,8 +37,6 @@ public class LoginPage extends Activity implements OnClickListener{
 	private LinearLayout moreZone;
 	private TextView intro;
 	private TextView regi;
-	
-	
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +44,8 @@ public class LoginPage extends Activity implements OnClickListener{
         requestWindowFeature(Window.FEATURE_NO_TITLE); 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,   
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); 
+        
+        setTheme(R.style.Blue); 
         
         setContentView(R.layout.page_login);
         login = (Button)this.findViewById(R.id.btn_login);
@@ -64,14 +61,12 @@ public class LoginPage extends Activity implements OnClickListener{
     }
     
     private TimerTask task = new TimerTask(){  
-		public void run() {  
-			
-			currAniStatus = currAniStatus + 1;
+		public void run() { 
 			Message msg = Message.obtain();
 			msg.what = currAniStatus;
 			msg.obj = null;
 			mHandler.sendMessage(msg);
-			
+			currAniStatus = currAniStatus + 1;
 			if(currAniStatus > ANI_SHOW_MORE){
 				timer.cancel();
 			}
@@ -84,42 +79,43 @@ public class LoginPage extends Activity implements OnClickListener{
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			if(msg.what <= ANI_SHOW_MORE){
-				showLoginAni();
+				showLoginAni(msg.what);
+				
             	return;
             }
 		}
 	};
 	
-	private void showLoginAni(){
+	private void showLoginAni(int aniStatus){
 		TranslateAnimation ani = new TranslateAnimation(1000, 0,0,0);  
 		
 		ani.setInterpolator(this, android.R.anim.accelerate_interpolator);//ÉèÖÃ¶¯»­²åÈëÆ÷
 		ani.setFillAfter(true);
-        if(currAniStatus == ANI_SHOW_USER){
+        if(aniStatus == ANI_SHOW_USER){
         	ani.setDuration(150);
             userZone.startAnimation(ani);
             userZone.setVisibility(View.VISIBLE);
             intro.setVisibility(View.INVISIBLE);
         }
         
-        if(currAniStatus == ANI_SHOW_PSW){
+        if(aniStatus == ANI_SHOW_PSW){
         	ani.setDuration(150);
             pswZone.startAnimation(ani);
             pswZone.setVisibility(View.VISIBLE);
         }
         
-        if(currAniStatus == ANI_SHOW_LOGIN){
+        if(aniStatus == ANI_SHOW_LOGIN){
         	ani.setDuration(150);
             login.startAnimation(ani);
             login.setVisibility(View.VISIBLE);
         }
 
-        if(currAniStatus == ANI_SHOW_MORE){
+        if(aniStatus == ANI_SHOW_MORE){
         	ani.setDuration(150);
             moreZone.startAnimation(ani);
             moreZone.setVisibility(View.VISIBLE);
         }
-        if(currAniStatus == ANI_SHOW_SWITCH){
+        if(aniStatus == ANI_SHOW_SWITCH){
         	ani.setInterpolator(this, android.R.anim.anticipate_interpolator);
         	ani.setDuration(150);
         	login.startAnimation(ani);
@@ -130,9 +126,7 @@ public class LoginPage extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		int id = v.getId();
 		if(id == R.id.btn_regi){
-			
-			currAniStatus = ANI_SHOW_SWITCH;
-			showLoginAni();
+			showLoginAni(ANI_SHOW_SWITCH);
 			if(btnSwitch == true){
 				btnSwitch = false;
 				regi.setText(R.string.login);

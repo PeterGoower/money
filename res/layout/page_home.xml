@@ -19,7 +19,7 @@
             android:text="攒钱总额"
             android:textSize="20sp"
             android:textColor="@color/white"
-            android:background="@color/app"
+            android:background="?attr/color_app"
             android:padding="8dp"
             android:gravity="center"
             android:layout_alignParentTop="true">     
@@ -139,7 +139,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:gravity="center"
-            android:background="@color/app"
+            android:background="?attr/color_app"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true">     
         </Button>
@@ -151,7 +151,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:gravity="center"
-            android:background="@color/app"
+            android:background="?attr/color_app"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true">     
         </Button>
