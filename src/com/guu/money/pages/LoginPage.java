@@ -3,21 +3,20 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SignUpCallback;
 import com.guu.money.R;
+import com.guu.money.listener.TipEvent;
+import com.guu.money.utils.Cloud;
+import com.guu.money.utils.Utily;
+import com.guu.money.views.Tip;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -28,12 +27,14 @@ import android.widget.TextView;
 
 
 
-public class LoginPage extends Activity implements OnClickListener{
+public class LoginPage extends BasePage implements OnClickListener, TipEvent{
 	public static final int ANI_SHOW_USER = 0;
 	public static final int ANI_SHOW_PSW = 1;
 	public static final int ANI_SHOW_LOGIN = 2;
 	public static final int ANI_SHOW_MORE = 3;
 	public static final int ANI_SHOW_SWITCH = 4;
+	
+	public static final int EVENT_REGI_OK = 0;
 	
 	private int currAniStatus = 0;
 	private boolean btnSwitch = true;
@@ -49,16 +50,17 @@ public class LoginPage extends Activity implements OnClickListener{
 	private LinearLayout moreZone;
 	private TextView intro;
 	private TextView regi;
-	private ProgressDialog progressDialog;
+	private Tip tip = new Tip(this,this);
+	
+	private String userString;
+	private String pswString;
+	private String emailString;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE); 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,   
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); 
-        
-        setTheme(R.style.Blue); 
         
         setContentView(R.layout.page_login);
         login = (Button)this.findViewById(R.id.btn_login);
@@ -107,7 +109,7 @@ public class LoginPage extends Activity implements OnClickListener{
 	private void showLoginAni(int aniStatus){
 		TranslateAnimation ani = new TranslateAnimation(1000, 0,-200,0);  
 		
-		ani.setInterpolator(this, android.R.anim.accelerate_interpolator);//���ö���������
+		ani.setInterpolator(this, android.R.anim.accelerate_interpolator);//���ö���������
 		ani.setFillAfter(true);
         if(aniStatus == ANI_SHOW_USER){
         	ani.setDuration(150);
@@ -139,121 +141,106 @@ public class LoginPage extends Activity implements OnClickListener{
         	login.startAnimation(ani);
         }
 	}
+	
+	private void switchBtnStatus(){
+		showLoginAni(ANI_SHOW_SWITCH);
+		if(btnSwitch == true){
+			btnSwitch = false;
+			regi.setText(R.string.login);
+			login.setText(R.string.register);
+			emailZone.setVisibility(View.VISIBLE);
+		}else{
+			btnSwitch = true;
+			regi.setText(R.string.register);
+			login.setText(R.string.login);
+			emailZone.setVisibility(View.GONE);
+		}
+	}
 
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
 		if(id == R.id.btn_regi){
-			showLoginAni(ANI_SHOW_SWITCH);
-			if(btnSwitch == true){
-				btnSwitch = false;
-				regi.setText(R.string.login);
-				login.setText(R.string.register);
-				emailZone.setVisibility(View.VISIBLE);
-			}else{
-				btnSwitch = true;
-				regi.setText(R.string.register);
-				login.setText(R.string.login);
-				emailZone.setVisibility(View.GONE);
-			}
+			switchBtnStatus();
 		}else if(id == R.id.btn_login){
-			if (!psw.getText().toString().isEmpty()) {
-				if (!user.getText().toString().isEmpty()) {
-					if (!email.getText().toString().isEmpty()) {
-						progressDialogShow();
-						register();
-					} else {
-						showError(LoginPage.this.getString(R.string.error_register_email_address_null));
-					}
-				} else {
-					showError(LoginPage.this.getString(R.string.error_register_user_name_null));
-				}
+			userString = user.getText().toString();
+		    pswString = psw.getText().toString();
+		    emailString = email.getText().toString();
+		    
+			if(btnSwitch){
+				tip.showChoose("呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵");
 			} else {
-				showError(LoginPage.this.getString(R.string.error_register_password_null));
+				if(userString.isEmpty()){
+					tip.showHint(R.string.error_register_user_name_null);
+					return;
+				}
+				if(pswString.isEmpty()){
+					tip.showHint(R.string.error_register_password_null);
+					return;
+				}
+				if(emailString.isEmpty()){
+					tip.showHint(R.string.error_register_email_address_null);
+					return;
+				}
+				if(!Utily.isEmail(emailString)){
+					tip.showHint(R.string.error_register_email_address_wrong);
+					return;
+				}
+				
+				tip.showWaitting();
+				register();
 			}
 		}
-		
 	}
 	
-	public void register() {
+	private void goHome(){
+		Intent intent = new Intent(LoginPage.this, HomePage.class);
+        startActivity(intent); 
+        this.finish();
+	}
+	
+	private void register() {
 	    SignUpCallback signUpCallback = new SignUpCallback() {
-	      public void done(AVException e) {
-	        progressDialogDismiss();
-	        if (e == null) {
-	          showRegisterSuccess();
-	          
-	        } else {
-	          switch (e.getCode()) {
-	            case 202:
-	              showError(LoginPage.this.getString(R.string.error_register_user_name_repeat));
-	              break;
-	            case 203:
-	              showError(LoginPage.this.getString(R.string.error_register_email_repeat));
-	              break;
-	            default:
-	              showError(LoginPage.this.getString(R.string.network_error));
-	              break;
-	          }
+	        public void done(AVException e) {
+	        	tip.dismissWaitting();
+	            if (e == null) {
+	            	tip.showHint(R.string.success_register_success);
+	            	tip.setEventTag(EVENT_REGI_OK);
+	            } else {
+	                switch (e.getCode()) {
+	                    case 202:
+	                    	tip.showHint(R.string.error_register_user_name_repeat);
+	                    break;
+	                    
+	                    case 203:
+	                    	tip.showHint(R.string.error_register_email_repeat);
+	                    break;
+	                    
+	                    default:
+	                    	tip.showHint(R.string.network_error);
+	                    break;
+	                }
+	            }
 	        }
-	      }
 	    };
-	    String username = user.getText().toString();
-	    String password = psw.getText().toString();
-	    String emailaddr = email.getText().toString();
 
-	    signUp(username, password, emailaddr, signUpCallback);
-		}
-	
-	private void signUp(String username, String password, String email, SignUpCallback signUpCallback) {
-	    AVUser user = new AVUser();
-	    user.setUsername(username);
-	    user.setPassword(password);
-	    user.setEmail(email);
-	    user.signUpInBackground(signUpCallback);
-	  }
-	
-	 private void showError(String errorMessage) {
-		    new AlertDialog.Builder(this)
-		        .setTitle(
-		            this.getResources().getString(
-		                R.string.dialog_message_title))
-		        .setMessage(errorMessage)
-		        .setNegativeButton(android.R.string.ok,
-		            new DialogInterface.OnClickListener() {
-		              public void onClick(DialogInterface dialog,
-		                                  int which) {
-		                dialog.dismiss();
-		              }
-		    }).show();
-     }
-	 
-	 private void progressDialogShow() {
-			progressDialog = ProgressDialog
-					.show(this,
-							this.getResources().getText(
-									R.string.dialog_message_title),
-									this.getResources().getText(
-									R.string.dialog_text_wait), true, false);
-		}
-	 private void progressDialogDismiss() {
-			if (progressDialog != null)
-				progressDialog.dismiss();
-		}
+	    Cloud.signUp(userString, pswString, emailString, signUpCallback);
+	}
 
-		private void showRegisterSuccess() {
-			new AlertDialog.Builder(this)
-					.setTitle(
-							this.getResources().getString(
-									R.string.dialog_message_title))
-					.setMessage(
-							this.getResources().getString(
-									R.string.success_register_success))
-					.setNegativeButton(android.R.string.ok,
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int which) {
-									dialog.dismiss();
-								}
-							}).show();
+	@Override
+	public void onHintDismiss(int eventTag) {
+		if(eventTag == EVENT_REGI_OK){
+			goHome();
 		}
+	}
+
+	@Override
+	public void onChoose(int which, int eventTag) {
+		Log.d("Goower", "btn"+which+"/eventTag:"+eventTag);
+	}
+
+	@Override
+	public void onConfirm(int eventTag) {
+		Log.d("Goower", "eventTag:"+eventTag);
+	}
 }

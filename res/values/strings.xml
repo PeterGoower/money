@@ -10,12 +10,16 @@
     <string name="psw_forget">忘记密码</string>
     <string name="intro">存钱 记账 过家家</string>
     <string name="error_register_email_address_null">邮箱地址不能空着哦</string>
+    <string name="error_register_email_address_wrong">邮箱的格式不太对，请填写真实的邮箱地址，以后找回密码的时候可能会用到哦</string>
     <string name="error_register_user_name_null">昵称不能空着哦</string>
     <string name="error_register_password_null">密码不能空着哦</string>
     <string name="dialog_message_title">提示</string>
     <string name="dialog_text_wait">请骚等...</string>
-    <string name="success_register_success">注册成功</string>
+    <string name="success_register_success">注册成功！ </string>
     <string name="error_register_user_name_repeat">用户名已被注册，请重新填写</string>
     <string name="error_register_email_repeat">邮箱已被注册，请更换邮箱</string>
     <string name="network_error">网络错误，请检查您的网络连接</string>
+    <string name="iknow">我知道了</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
 </resources>

@@ -27,7 +27,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".pages.HomePage" />
-        <activity android:name=".pages.IndexPage" />
     </application>
 
 </manifest>

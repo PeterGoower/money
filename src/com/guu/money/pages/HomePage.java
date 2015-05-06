@@ -8,13 +8,12 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class HomePage extends Activity {
+public class HomePage extends BasePage {
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE); 
-        
+         
         setContentView(R.layout.page_home);
         
         Button setBtn = (Button) findViewById(R.id.btn1);
