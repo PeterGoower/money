@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/color_app">
+    android:layout_height="match_parent">
     <RelativeLayout android:layout_centerInParent="true"
         android:layout_width="300dp"
         android:layout_height="180dp"
-        android:background="@drawable/tip_bg">
+        android:background="@drawable/waitting_bg">
         <TextView
             android:id="@+id/info"
             android:layout_width="250dp"
@@ -14,7 +13,7 @@
             android:layout_margin="15dp"
             android:textColor="@color/white"
             android:gravity="center"
-            android:paddingBottom="40dp"
+            android:paddingBottom="50dp"
             android:textSize="18sp"
             android:layout_centerInParent="true">
         </TextView>
@@ -26,9 +25,13 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/button_app_stra">     
+            android:background="@drawable/dialog_btn">
         </Button>
     </RelativeLayout>
 </RelativeLayout>
