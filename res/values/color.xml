@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="transparent">#00ffffff</color>
     <color name="dark">#23282b</color>
     <color name="white">#ffffff</color>
-    <color name="gray">#536370</color>
+    <color name="gray_black">#536370</color>
+    <color name="gray">#dddddd</color>
     <color name="gray_text">#5b5b5b</color>
     <color name="hint_white">#f2f2f2</color>
     <color name="line">#9f9f9f</color>

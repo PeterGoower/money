@@ -20,6 +20,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -68,7 +69,10 @@ public class LoginPage extends BasePage implements OnClickListener, TipEvent{
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE); 
+        
         super.onCreate(savedInstanceState);
+        
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,   
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); 
         
@@ -97,7 +101,7 @@ public class LoginPage extends BasePage implements OnClickListener, TipEvent{
         	login.setEnabled(false);
         } 
         timer = new Timer(true);
-		timer.schedule(task, 2000, 150); 
+		timer.schedule(task, 1000, 150); 
     }
     
     private TimerTask task = new TimerTask(){  

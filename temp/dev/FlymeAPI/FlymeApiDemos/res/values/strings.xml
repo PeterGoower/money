@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="app_name">FlymeApiDemos</string>
+    <string name="has_smart_bar">SmartBar/是否有SmartBar</string>
+    <string name="custom_back_button">SmartBar/定制返回键、more键图标</string>
+    <string name="hide_actionbar_top">SmartBar/隐藏ActionBar顶栏</string>
+    <string name="smartbar_tab">SmartBar/SmartBar上添加Tab</string>
+    <string name="smartbar_menu">SmartBar/SmartBar上添加menu</string>
+    <string name="actionbar_style">SmartBar/定制SmartBar样式</string>
+    
+    <string name="inputmethod_white_theme">InputMethod/APP系统输入法白色主题</string>
+    
+    <string name="statusbar_icon_white_theme">StatusBar/Flyme沉浸模式示例1</string>
+    <string name="statusbar_transparent">StatusBar/Flyme沉浸模式示例2</string>
+    
+    <string name="wallpaper_custom">Wallpaper/自定义壁纸</string>
+    
+    <string name="hide_actionbar_top_content">隐藏ActionBar顶栏，可以使用ActionBarProxy.setActionBarViewCollapsable(getActionBar(), true)
+        实现，前提条件是顶部actionBar无内容(包括图标，menu，custom等)。如果有action menu，
+        可以配合manifest中设置activity的android:uiOptions="splitActionBarWhenNarrow"来把action menu放到smartBar</string>
+        
+    <string name="click_for_inputmethod">点击弹出输入法窗口</string>
+    <string name="set_statusbar_dark">更改状态栏颜色主题</string>
+    <string name="input_pc_path">/sdcard/5100.jpg</string>
+    <string name="set_home_wallpaper">设置为桌面壁纸</string>
+    <string name="set_Lock_wallpaper">设置为锁屏壁纸</string>
+    
+    <string name="notification">Notification</string>
+
+</resources>

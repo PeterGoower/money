@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+	<title>Meizu FlymeApi开发指南</title>
+	<meta name="GENERATOR" content="LibreOffice 3.5  (Linux)">
+	<meta name="AUTHOR" content="0">
+	<meta name="CREATED" content="20081226;16450000">
+	<meta name="CHANGEDBY" content="User">
+	<meta name="CHANGED" content="20141112;17520000">
+	<meta name="Info 2" content="">
+	<meta name="Info 3" content="">
+	<meta name="Info 4" content="">
+	<meta name="KSOProductBuildVer" content="2052-9.1.0.4856">
+	<style type="text/css">
+	<!--
+		@page { margin-right: 3.18cm; margin-top: 1.5cm; margin-bottom: 1.75cm }
+		P { margin-bottom: 0.21cm; direction: ltr; color: #000000; text-align: justify; widows: 0; orphans: 0 }
+		P.western { font-family: "Times New Roman", serif; font-size: 10pt; so-language: en-US }
+		P.cjk { font-family: "宋体", "SimSun"; font-size: 10pt; so-language: zh-CN }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 10pt }
+		H1 { margin-top: 0cm; margin-bottom: 0cm; direction: ltr; color: #000000; text-align: justify; page-break-inside: avoid; widows: 0; orphans: 0 }
+		H1.western { font-family: "Times New Roman", serif; font-size: 16pt; so-language: en-US }
+		H1.cjk { font-family: "宋体", "SimSun"; font-size: 16pt; so-language: zh-CN; font-style: normal; font-weight: bold }
+		H1.ctl { font-family: "Times New Roman", serif; font-size: 22pt; font-weight: bold }
+		H2 { margin-top: 0cm; margin-bottom: 0cm; direction: ltr; color: #000000; line-height: 100%; text-align: justify; page-break-inside: avoid; widows: 0; orphans: 0 }
+		H2.western { font-family: "Arial", sans-serif; font-size: 14pt; so-language: en-US; font-weight: normal }
+		H2.cjk { font-family: "宋体", "SimSun"; font-size: 14pt; so-language: zh-CN; font-style: normal; font-weight: normal }
+		H2.ctl { font-family: "Arial", sans-serif; font-size: 10pt; font-weight: normal }
+		A:link { text-decoration: none }
+	-->
+	</style>
+</head>
+<body dir="LTR" lang="zh-CN" text="#000000">
+<div type="HEADER">
+	<p style="margin-bottom: 0.94cm"><br>
+	</p>
+</div>
+<p class="cjk" style="margin-bottom: 0cm" align="CENTER"><font face="Times New Roman, serif"><span lang="en-US">Meizu
+FlymeApi</span></font>开发指南</p>
+<p class="cjk" style="margin-bottom: 0cm" align="CENTER">目录</p>
+<div id="内容目录1" dir="LTR">
+	<p style="margin-bottom: 0cm"><a href="#__RefHeading__189_808596310">
+	一、<font face="Times New Roman, serif"><span lang="en-US">SmartBar	1</span></font></a></p>
+	<p style="margin-left: 0.74cm; margin-bottom: 0cm"><font face="Times New Roman, serif"><span lang="en-US"><a href="#__RefHeading__191_808596310">1.SmartBar</a></span></font><a href="#__RefHeading__191_808596310">的设计理念<font face="Times New Roman, serif"><span lang="en-US">	1</span></font></a></p>
+	<p style="margin-left: 0.74cm; margin-bottom: 0cm"><font face="Times New Roman, serif"><span lang="en-US"><a href="#__RefHeading__193_808596310">2.</a></span></font><a href="#__RefHeading__193_808596310">适配<font face="Times New Roman, serif"><span lang="en-US">SmartBar	2</span></font></a></p>
+	<p style="margin-left: 0.74cm; margin-bottom: 0cm"><font face="Times New Roman, serif"><span lang="en-US"><a href="#__RefHeading__195_808596310">3.</a></span></font><a href="#__RefHeading__195_808596310">判断设备是否有<font face="Times New Roman, serif"><span lang="en-US">SmartBar	4</span></font></a></p>
+	<p style="margin-left: 0.74cm; margin-bottom: 0cm"><font face="Times New Roman, serif"><span lang="en-US"><a href="#__RefHeading__197_808596310">4.SmartBar</a></span></font><a href="#__RefHeading__197_808596310">上添加<font face="Times New Roman, serif"><span lang="en-US">menu	4</span></font></a></p>
+	<p style="margin-left: 0.74cm; margin-bottom: 0cm"><font face="Times New Roman, serif"><span lang="en-US"><a href="#__RefHeading__199_808596310">5.SmartBar</a></span></font><a href="#__RefHeading__199_808596310">上添加<font face="Times New Roman, serif"><span lang="en-US">Tab	5</span></font></a></p>
+	<p style="margin-left: 0.74cm; margin-bottom: 0cm"><font face="Times New Roman, serif"><span lang="en-US"><a href="#__RefHeading__201_808596310">6.</a></span></font><a href="#__RefHeading__201_808596310">定制<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font></a><a href="#__RefHeading__201_808596310">背景、返回键及<font face="Times New Roman, serif"><span lang="en-US">OverFlowButton</span></font></a><a href="#__RefHeading__201_808596310">图标<font face="Times New Roman, serif"><span lang="en-US">	5</span></font></a></p>
+	<p style="margin-left: 0.74cm; margin-bottom: 0cm"><font face="Times New Roman, serif"><span lang="en-US"><a href="#__RefHeading__203_808596310">7.</a></span></font><a href="#__RefHeading__203_808596310">获取<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font></a><a href="#__RefHeading__203_808596310">和<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font></a><a href="#__RefHeading__203_808596310">高度<font face="Times New Roman, serif"><span lang="en-US">	6</span></font></a></p>
+	<p style="margin-bottom: 0cm"><a href="#__RefHeading__205_808596310">
+	二、沉浸式状态栏<font face="Times New Roman, serif"><span lang="en-US">	7</span></font></a></p>
+	<p style="margin-bottom: 0cm"><a href="#__RefHeading__207_808596310">
+	三、白色系统键盘<font face="Times New Roman, serif"><span lang="en-US">	7</span></font></a></p>
+	<p style="margin-bottom: 0cm"><a href="#__RefHeading__209_808596310">
+	四、锁屏壁纸<font face="Times New Roman, serif"><span lang="en-US">	7</span></font></a></p>
+	<p style="margin-bottom: 0cm"><a href="#__RefHeading__211_808596310">
+	五、<font face="Times New Roman, serif"><span lang="en-US">Notification</span></font></a><a href="#__RefHeading__211_808596310">通知栏<font face="Times New Roman, serif"><span lang="en-US">	8</span></font></a></p>
+	<p style="margin-left: 0.74cm; margin-bottom: 0cm"><font face="Times New Roman, serif"><span lang="en-US"><a href="#__RefHeading__213_808596310">1.</a></span></font><a href="#__RefHeading__213_808596310">设置<font face="Times New Roman, serif"><span lang="en-US">Notification</span></font></a><a href="#__RefHeading__213_808596310">圆环<font face="Times New Roman, serif"><span lang="en-US">ProgressBar</span></font></a><a href="#__RefHeading__213_808596310">的形状<font face="Times New Roman, serif"><span lang="en-US">	8</span></font></a></p>
+	<p style="margin-left: 0.74cm; margin-bottom: 0cm"><font face="Times New Roman, serif"><span lang="en-US"><a href="#__RefHeading__215_808596310">2.</a></span></font><a href="#__RefHeading__215_808596310">设置<font face="Times New Roman, serif"><span lang="en-US">Notification</span></font></a><a href="#__RefHeading__215_808596310">圆环<font face="Times New Roman, serif"><span lang="en-US">ProgressBar</span></font></a><a href="#__RefHeading__215_808596310">的颜色<font face="Times New Roman, serif"><span lang="en-US">	8</span></font></a></p>
+</div>
+<p class="cjk" style="margin-bottom: 0cm"><br>
+</p>
+<p class="cjk" style="margin-bottom: 0cm"><br>
+</p>
+<p class="cjk" style="margin-bottom: 0cm" align="CENTER">前言</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">flyme-api.jar</span></font>是<font face="Times New Roman, serif"><span lang="en-US">Meizu</span></font>给第三方应用开发者提供的适配<font face="Times New Roman, serif"><span lang="en-US">FlymeOS</span></font>兼容包，第三方应用开发者可以通过使用<font face="Times New Roman, serif"><span lang="en-US">flyme-api.jar</span></font>中提供给的接口和方案来开发应用，达到既兼容<font face="Times New Roman, serif"><span lang="en-US">android</span></font>原生系统，又能够完美适配<font face="Times New Roman, serif"><span lang="en-US">FlymeOS</span></font>。</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">flyme-api.jar</span></font>中主要包含以下内容：</p>
+<ul>
+	<li><p class="cjk" style="margin-bottom: 0cm" align="LEFT">适配<font face="Times New Roman, serif"><span lang="en-US">Smartbar</span></font></p>
+	</li><li><p class="cjk" style="margin-bottom: 0cm" align="LEFT">沉浸式状态栏</p>
+	</li><li><p class="cjk" style="margin-bottom: 0cm" align="LEFT">白色系统输入法</p>
+	</li><li><p class="cjk" style="margin-bottom: 0cm" align="LEFT">锁屏壁纸</p>
+</li></ul>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">具体用法请参考<font face="Times New Roman, serif"><span lang="en-US">FlymeApiDemo</span></font>。</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">注意：对于<font face="Times New Roman, serif"><span lang="en-US">flyme-api.jar</span></font>中提供的接口的有效性，<font face="Times New Roman, serif"><span lang="en-US">Meizu</span></font>保留修改或删除接口功能实现的权利，但<font face="Times New Roman, serif"><span lang="en-US">flyme-api.jar</span></font>中的接口都会提供返回值判断调用是否成功，应用需根据返回值做兼容性处理。</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"> 
+</p>
+<h1 class="cjk"><a name="__RefHeading__189_808596310"></a>一、<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font></h1>
+<h2 class="cjk"><a name="__RefHeading__191_808596310"></a><font face="Arial, sans-serif"><span lang="en-US">1.SmartBar</span></font>的设计理念</h2>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+现在手机的屏幕越来越大，随便买一个都会是<font face="Times New Roman, serif"><span lang="en-US">5</span></font>寸以上的屏幕。但这时你会发现，手指不再可以覆盖整个屏幕了。屏幕的右上角成了操控的“盲区”。而<font face="Times New Roman, serif"><span lang="en-US">Google</span></font>标准的<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>，恰巧把常用的“功能键”放置在“盲区”中。如图<font face="Times New Roman, serif"><span lang="en-US">1-1</span></font>所示</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="CENTER">
+<img src="Meizu%20FlymeApi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97_files/Meizu%2520FlymeApi_htm_7ae990d4.jpg" name="图形1" height="320" width="395" align="BOTTOM" border="0"></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="CENTER">
+图<font face="Times New Roman, serif"><span lang="en-US">1-1</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+因些我们需要把<font face="Times New Roman, serif"><span lang="en-US">Action
+Bar</span></font>的“功能键”挪走。经过反复探索和研究，我们发明了<font face="Times New Roman, serif"><span lang="en-US">Smart
+Bar</span></font>，即把“功能键”和<font face="Times New Roman, serif"><span lang="en-US">Navigation
+Bar</span></font>整合到一起，放到屏幕的下面。如图<font face="Times New Roman, serif"><span lang="en-US">1-2</span></font>所示：</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="CENTER">
+<img src="Meizu%20FlymeApi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97_files/Meizu%2520FlymeApi_htm_m5eeabcb9.jpg" name="图形2" height="272" width="408" align="BOTTOM" border="0"></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="CENTER">
+图<font face="Times New Roman, serif"><span lang="en-US">1-2</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+这样做的好处是明显的。我们握持手机的姿势决定了手指可以更方便的照顾到屏幕下方的内容。那么，把最常用的操作和功能都尽可能的集中在这里，并且放在固定的位置上，这样操控上的好处很多。</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+因此就须要第三方软件开者对<font face="Times New Roman, serif"><span lang="en-US">Smart
+Bar</span></font>的功能做简单的适配工作。</p>
+<h2 class="cjk"><a name="__RefHeading__193_808596310"></a><font face="Arial, sans-serif"><span lang="en-US">2.</span></font>适配<font face="Arial, sans-serif"><span lang="en-US">SmartBar</span></font></h2>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>是在<font face="Times New Roman, serif"><span lang="en-US">android</span></font>原生<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>基础上进行定制，建议使用<font face="Times New Roman, serif"><span lang="en-US">android4.0</span></font>以上版本<font face="Times New Roman, serif"><span lang="en-US">SDK</span></font>，并根据<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>规范开发应用，如果是<font face="Times New Roman, serif"><span lang="en-US">3.0</span></font>之前版本可使用<font face="Times New Roman, serif"><span lang="en-US">android-support-v7</span></font>兼容<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>。下面分别介绍用两种适配方法：</p>
+<ol>
+	<li><p class="cjk" style="margin-bottom: 0cm" align="LEFT">用<font face="Times New Roman, serif"><span lang="en-US">android-support-v7</span></font>适配<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font></p>
+</li></ol>
+<p class="cjk" style="margin-left: 0.74cm; margin-bottom: 0cm" align="LEFT">
+以前比<font face="Times New Roman, serif"><span lang="en-US">3.0</span></font>低的版本要使用<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>，必须使用国外大牛写的<font face="Times New Roman, serif"><span lang="en-US">ActionBarSherlock</span></font>这个开源项目。但后来<font face="Times New Roman, serif"><span lang="en-US">Google</span></font>在官方的<font face="Times New Roman, serif"><span lang="en-US">android-support-v7</span></font>包中添加了<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>，开始让<font face="Times New Roman, serif"><span lang="en-US">2.1</span></font>以后的版本支持<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>，从此以后曾经最火的<font face="Times New Roman, serif"><span lang="en-US">Android</span></font>开源项目<font face="Times New Roman, serif"><span lang="en-US">ActionBarSherlock</span></font>可以退出历史舞台了。</p>
+<p class="cjk" style="margin-left: 0.74cm; margin-bottom: 0cm" align="LEFT">
+使用<font face="Times New Roman, serif"><span lang="en-US">android-support-v7</span></font>包中<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>也很简单。简单实现步骤如下：</p>
+<ol>
+	<ul>
+		<li><p class="cjk" style="margin-bottom: 0cm" align="LEFT">首先以项目的形式导入<font face="Times New Roman, serif"><span lang="en-US">android-support-v7</span></font>库。</p>
+		</li><li><p class="cjk" style="margin-bottom: 0cm" align="LEFT">然后创建自己的工程，如<font face="Times New Roman, serif"><span lang="en-US">myDemo</span></font>，右键单击该工程，选择<font face="Times New Roman, serif"><span lang="en-US">Properties</span></font>在弹出的对话框中，选择<font face="Times New Roman, serif"><span lang="en-US">Android</span></font>选项卡，然后点击<font face="Times New Roman, serif"><span lang="en-US">Add</span></font>按钮，添加<font face="Times New Roman, serif"><span lang="en-US">appcompat_v7</span></font>工程。如图<font face="Times New Roman, serif"><span lang="en-US">2-1</span></font>所示：</p>
+	</li></ul>
+</ol>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="CENTER">
+<img src="Meizu%20FlymeApi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97_files/Meizu%2520FlymeApi_htm_m68a485b9.png" name="图形3" height="287" width="435" align="BOTTOM" border="0"></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="CENTER">
+图<font face="Times New Roman, serif"><span lang="en-US">2-1</span></font></p>
+<ol>
+	<ul>
+		<li><p class="cjk" style="margin-bottom: 0cm" align="LEFT">接着继承<font face="Times New Roman, serif"><span lang="en-US">ActiionBarActivity</span></font>来创建自己的<font face="Times New Roman, serif"><span lang="en-US">activity</span></font>，例如：</p>
+	</li></ul>
+</ol>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">package
+com.example.mydemo;</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<br>
+</p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">import
+android.os.Bundle;</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">import
+android.support.v7.app.ActionBar;</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">import
+android.support.v7.app.ActionBarActivity;</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<br>
+</p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">public class
+MainActivity extends ActionBarActivity {</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">	private
+ActionBar actionBar;</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<br>
+</p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">	@Override</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">	protected
+void onCreate(Bundle savedInstanceState) {</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">		super.onCreate(savedInstanceState);</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">		setContentView(R.layout.activity_main);</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">		actionBar =
+getSupportActionBar();</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">		actionBar.setDisplayShowHomeEnabled(true);</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">	}</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">}</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<br>
+</p>
+<ol>
+	<ul>
+		<li><p class="cjk" style="margin-bottom: 0cm" align="LEFT">最后在<font face="Times New Roman, serif"><span lang="en-US">Androidmanifest</span></font>文件中<font face="Times New Roman, serif"><span lang="en-US">,</span></font>为你使用了<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>的<font face="Times New Roman, serif"><span lang="en-US">actitity</span></font>添加<font face="Times New Roman, serif"><span lang="en-US">theme</span></font>属性<font face="Times New Roman, serif"><span lang="en-US">,</span></font>这个<font face="Times New Roman, serif"><span lang="en-US">theme</span></font>必须是<font face="Times New Roman, serif">
+		</font><font face="Times New Roman, serif"><span lang="en-US">@style/Theme.AppCompat</span></font>或它的子类。例如：</p>
+	</li></ul>
+</ol>
+<p class="cjk" style="margin-left: 1.48cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">&lt;activity
+android:theme="@style/Theme.AppCompat.Light"&gt;</span></font></p>
+<p class="cjk" style="margin-left: 0.74cm; margin-bottom: 0cm" align="LEFT">
+注意：如果只是把<font face="Times New Roman, serif"><span lang="en-US">android-support-v7-appcompat.jar</span></font>导入项目中，在设置<font face="Times New Roman, serif"><span lang="en-US">Activity</span></font>的<font face="Times New Roman, serif"><span lang="en-US">theme</span></font>时会报错，提示找不到<font face="Times New Roman, serif"><span lang="en-US">"@style/Theme.AppCompat"</span></font>。这是由于需要把<font face="Times New Roman, serif"><span lang="en-US">v7</span></font>和资源文件一起导入才行。</p>
+<ol start="2">
+	<li><p class="cjk" style="margin-bottom: 0cm" align="LEFT">用<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>适配<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font></p>
+</li></ol>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+关于<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>使用说明请参考官方文档<font face="Times New Roman, serif"><span lang="en-US">Action
+Bar</span></font>，具体示例请看<font face="Times New Roman, serif"><span lang="en-US">Android
+SDK</span></font>中的<font face="Times New Roman, serif"><span lang="en-US">Samples</span></font>，如<font face="Times New Roman, serif"><span lang="en-US">sdk/samples/android-16/ActionBarCompat</span></font>，或者<font face="Times New Roman, serif"><span lang="en-US">sdk/samples/android-16/ApiDemos</span></font>中的<font face="Times New Roman, serif"><span lang="en-US">App
+&gt; Action Bar</span></font>。另外，如需更改<font face="Times New Roman, serif"><span lang="en-US">Smart
+Bar</span></font>样式（背景，字体等），请按照官方文档<font face="Times New Roman, serif"><span lang="en-US">Action
+Bar</span></font>提供的方法修改。</p>
+<p class="cjk" style="margin-left: 0.74cm; margin-bottom: 0cm" align="LEFT">
+关于<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>的详细内容还可以参考<font face="Times New Roman, serif"><span lang="en-US">android
+developers</span></font>的网址<font face="Times New Roman, serif"><span lang="en-US">:
+<a href="http://developer.android.com/guide/topics/ui/actionbar.html">http://developer.android.com/guide/topics/ui/actionbar.html</a>
+</span></font>。</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<br>
+</p>
+<h2 class="cjk"><a name="__RefHeading__195_808596310"></a><font face="Arial, sans-serif"><span lang="en-US">3.</span></font>判断设备是否有<font face="Arial, sans-serif"><span lang="en-US">SmartBar</span></font></h2>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">Flyme3.0</span></font>以上版本可通过<font face="Times New Roman, serif"><span lang="en-US">ActionBarProxy.hasSmartBar()</span></font>来判断是否有<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>，但如果需要兼容<font face="Times New Roman, serif"><span lang="en-US">Flyme2.0</span></font>系统，仍需要通过<font face="Times New Roman, serif"><span lang="en-US">Build.DEVICE</span></font>判断机型。</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">示例代码如下：</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">@Override</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">protected void
+onCreate(Bundle savedInstanceState) {</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">super.onCreate(savedInstanceState);</span></font></p>
+<p class="cjk" style="margin-left: 0.37cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">if
+(ActionBarProxy.hasSmartBar()) {</span></font></p>
+<p class="cjk" style="margin-left: 1.11cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">//
+</span></font>如有<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>，则使用拆分<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>，使<font face="Times New Roman, serif"><span lang="en-US">MenuItem</span></font>显示在底栏</p>
+<p class="cjk" style="margin-left: 1.11cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">getWindow().setUiOptions(</span></font></p>
+<p class="cjk" style="margin-left: 1.11cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">ActivityInfo.UIOPTION_SPLIT_ACTION_BAR_WHEN_NARROW);</span></font></p>
+<p class="cjk" style="margin-left: 1.11cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">Toast.makeText(this,
+"has SmartBar!", Toast.LENGTH_SHORT).show();</span></font></p>
+<p class="cjk" style="margin-left: 0.37cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">} else {</span></font></p>
+<p class="cjk" style="margin-left: 1.11cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">//
+</span></font>取消<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>拆分，使<font face="Times New Roman, serif"><span lang="en-US">MenuItem</span></font>显示在顶栏</p>
+<p class="cjk" style="margin-left: 1.11cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">getWindow().setUiOptions(0);</span></font></p>
+<p class="cjk" style="margin-left: 0.37cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">}</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">}</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"> 
+</p>
+<h2 class="cjk"><a name="__RefHeading__197_808596310"></a><font face="Arial, sans-serif"><span lang="en-US">4.SmartBar</span></font>上添加<font face="Arial, sans-serif"><span lang="en-US">menu</span></font></h2>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+将<font face="Times New Roman, serif"><span lang="en-US">menu</span></font>添加到<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>上，首先，按照<font face="Times New Roman, serif"><span lang="en-US">android</span></font>标准，通过<font face="Times New Roman, serif"><span lang="en-US">onCreateOptionsMenu(Menu
+menu)</span></font>创建<font face="Times New Roman, serif"><span lang="en-US">menu</span></font>显示在<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>上，如果要将<font face="Times New Roman, serif"><span lang="en-US">menu</span></font>显示在<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>上，则需要使用拆分的<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>，只需在<font face="Times New Roman, serif"><span lang="en-US">AndroidManifest</span></font>的<font face="Times New Roman, serif"><span lang="en-US">&lt;activity&gt;</span></font>或者<font face="Times New Roman, serif"><span lang="en-US">&lt;application&gt;</span></font>加上<font face="Times New Roman, serif"><span lang="en-US">uiOptions="splitActionBarWhenNarrow"</span></font>，例如：</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">&lt;activity</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">          
+<font face="Times New Roman, serif"><span lang="en-US">android:name=".ActionBarSplit"</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">          
+<font face="Times New Roman, serif"><span lang="en-US">android:label="@string/action_bar_split"</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">          
+<font face="Times New Roman, serif"><span lang="en-US">android:uiOptions="splitActionBarWhenNarrow"
+&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">&lt;/activity&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"> 
+</p>
+<h2 class="cjk"><a name="__RefHeading__199_808596310"></a><font face="Arial, sans-serif"><span lang="en-US">5.SmartBar</span></font>上添加<font face="Arial, sans-serif"><span lang="en-US">Tab</span></font></h2>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+使用<font face="Times New Roman, serif"><span lang="en-US">ActionBar
+Tab</span></font>的方式，将<font face="Times New Roman, serif"><span lang="en-US">Tab</span></font>显示在<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>上。选中状态等<font face="Times New Roman, serif"><span lang="en-US">state</span></font>都可在<font face="Times New Roman, serif"><span lang="en-US">drawable</span></font>的<font face="Times New Roman, serif"><span lang="en-US">xml</span></font>中配置，并且<font face="Times New Roman, serif"><span lang="en-US">Tab</span></font>图标定制需求可以使用<font face="Times New Roman, serif"><span lang="en-US">ActionBar
+Tab</span></font>的<font face="Times New Roman, serif"><span lang="en-US">CustomView</span></font>满足。但该方法为<font face="Times New Roman, serif"><span lang="en-US">FlymeOS</span></font>新增方法，在原生<font face="Times New Roman, serif"><span lang="en-US">Android</span></font>系统中，<font face="Times New Roman, serif"><span lang="en-US">tab</span></font>仍会显示在屏幕上方<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>顶栏。<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>上添加<font face="Times New Roman, serif"><span lang="en-US">Tab</span></font>方法，首先调用<font face="Times New Roman, serif"><span lang="en-US">ActionBar#setNavigationMode(ActionBar.NAVIGATION_MODE_TABS)</span></font>将<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>置为<font face="Times New Roman, serif"><span lang="en-US">Tab</span></font>导航模式，然后再调用<font face="Times New Roman, serif"><span lang="en-US">ActionBarProxy.setActionBarTabsShowAtBottom(bar,
+true);</span></font>将<font face="Times New Roman, serif"><span lang="en-US">Tab</span></font>显示在<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>上，具体用法参考<font face="Times New Roman, serif"><span lang="en-US">FlymeApiDemo</span></font>。</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"> 
+</p>
+<h2 class="cjk"><a name="__RefHeading__201_808596310"></a><font face="Arial, sans-serif"><span lang="en-US">6.</span></font>定制<font face="Arial, sans-serif"><span lang="en-US">SmartBar</span></font>背景、返回键及<font face="Arial, sans-serif"><span lang="en-US">OverFlowButton</span></font>图标</h2>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">方法一、通过<font face="Times New Roman, serif"><span lang="en-US">style</span></font>定制，首先自定义<font face="Times New Roman, serif"><span lang="en-US">Theme</span></font>，然后重新定义<font face="Times New Roman, serif"><span lang="en-US">style</span></font></p>
+<p class="cjk" style="margin-left: 1.48cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">android:actionBarStyle</span></font>、</p>
+<p class="cjk" style="margin-left: 1.48cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">android:actionOverflowButtonStyle</span></font>、</p>
+<p class="cjk" style="margin-left: 1.48cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">android:actionButtonStyle</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+示例代码如下：</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">    <font face="Times New Roman, serif"><span lang="en-US">&lt;style
+name="FlymeTheme"
+parent="@android:style/Theme.DeviceDefault.Light"&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">         <font face="Times New Roman, serif"><span lang="en-US">&lt;item
+name="android:actionBarStyle"&gt;@style/FlymeActionBarStyle&lt;/item&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">         <font face="Times New Roman, serif"><span lang="en-US">&lt;item
+name="android:actionOverflowButtonStyle"&gt;</span></font></p>
+<p class="cjk" style="margin-left: 2.96cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">@style/FlymeActionButtonOverflowStyle&lt;/item&gt;
+  </span></font>
+</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">&lt;/style&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"> 
+</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">&lt;!--
+overflow</span></font>图标<font face="Times New Roman, serif"> </font><font face="Times New Roman, serif"><span lang="en-US">--&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">&lt;style
+name="FlymeActionButtonOverflowStyle" </span></font>
+</p>
+<p class="cjk" style="margin-left: 1.48cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">parent="@android:style/Widget.DeviceDefault.Light.ActionButton.Overflow"&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">        <font face="Times New Roman, serif"><span lang="en-US">&lt;item
+name="android:src"&gt;@drawable/mz_ic_sb_more&lt;/item&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">&lt;/style&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">        
+</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">&lt;!--
+smartbar</span></font>及<font face="Times New Roman, serif"><span lang="en-US">actionbar</span></font>顶栏背景<font face="Times New Roman, serif">
+</font><font face="Times New Roman, serif"><span lang="en-US">--&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">&lt;style
+name="FlymeActionBarStyle"</span></font></p>
+<p class="cjk" style="margin-left: 0.74cm; text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">parent="@android:style/Widget.DeviceDefault.Light.ActionBar"&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">        <font face="Times New Roman, serif"><span lang="en-US">&lt;item
+name="android:background"&gt;@drawable/mz_titlebar_background&lt;/item&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">        <font face="Times New Roman, serif"><span lang="en-US">&lt;item
+name="android:backgroundSplit"&gt;@drawable/mz_smartbar_background&lt;/item&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">&lt;/style&gt;
+</span></font>
+</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"> 
+</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">对于的<font face="Times New Roman, serif"><span lang="en-US">Application</span></font>或<font face="Times New Roman, serif"><span lang="en-US">Activity</span></font>可改为应用该<font face="Times New Roman, serif"><span lang="en-US">style</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">&lt;application</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">android:allowBackup="true"</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">android:icon="@drawable/ic_launcher"</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">android:label="@string/app_name"</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">android:theme="@style/FlymeTheme"</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">android:uiOptions="splitActionBarWhenNarrow"&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">&lt;activity
+android:name=".smartbar.ActionBarStyle"</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">android:label="@string/actionbar_style"</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">android:uiOptions="splitActionBarWhenNarrow"</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">android:theme="@style/FlymeTheme"&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">&lt;intent-filter&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">              
+<font face="Times New Roman, serif"><span lang="en-US">&lt;action
+android:name="android.intent.action.MAIN" /&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">              
+<font face="Times New Roman, serif"><span lang="en-US">&lt;category  
+   android:name="android.intent.category.FLYME_SAMPLE_CODE"
+/&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">           
+<font face="Times New Roman, serif"><span lang="en-US">&lt;/intent-filter&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">&lt;/activity&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">&lt;/application&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"> 
+</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">方法二、在代码中动态修改，修改<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>背景可直接通过<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>方法<font face="Times New Roman, serif"><span lang="en-US">setSplitBackgroundDrawable(Drawable
+drawable)</span></font>实现，修改<font face="Times New Roman, serif"><span lang="en-US">SmartBar
+</span></font>上返回键及<font face="Times New Roman, serif"><span lang="en-US">OverFlowButton</span></font>图标是<font face="Times New Roman, serif"><span lang="en-US">FlymeOS</span></font>新增的方法，可通过<font face="Times New Roman, serif"><span lang="en-US">ActionBarProxy.SetBackButtonDrawable(Drawable
+drawable)</span></font>和</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">ActionBarProxy.SetOverFlowButtonDrawable(Drawable
+drawable)</span></font>实现。</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">示例代码如下：</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"><font face="Times New Roman, serif"><span lang="en-US">@Override</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">    <font face="Times New Roman, serif"><span lang="en-US">protected
+void onCreate(Bundle savedInstanceState) {</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">super.onCreate(savedInstanceState);</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">        
+</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">        <font face="Times New Roman, serif"><span lang="en-US">final
+ActionBar bar = getActionBar();</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">        <font face="Times New Roman, serif"><span lang="en-US">if(bar
+!= null){</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">	//</span></font>设置<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>顶栏背景</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">	bar.setBackgroundDrawable(new
+ColorDrawable(Color.GRAY));</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">	//</span></font>设置<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>背景</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">	bar.setSplitBackgroundDrawable(new
+ColorDrawable(Color.GRAY));</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">	//</span></font>设置<font face="Times New Roman, serif"><span lang="en-US">more</span></font>键图标</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">	ActionBarProxy.SetOverFlowButtonDrawable(bar,
+getResources().getDrawable(R.drawable.mz_ic_tab_more_normal));</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">	//</span></font>设置<font face="Times New Roman, serif"><span lang="en-US">back</span></font>键图标</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">       
+<font face="Times New Roman, serif"><span lang="en-US">	ActionBarProxy.SetBackButtonDrawable(bar,
+getResources().getDrawable(R.drawable.mz_ic_tab_back_normal));</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">        <font face="Times New Roman, serif"><span lang="en-US">}</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">        
+</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">    <font face="Times New Roman, serif"><span lang="en-US">}</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">    
+</p>
+<h2 class="cjk"><a name="__RefHeading__203_808596310"></a><font face="Arial, sans-serif"><span lang="en-US">7.</span></font>获取<font face="Arial, sans-serif"><span lang="en-US">ActionBar</span></font>和<font face="Arial, sans-serif"><span lang="en-US">SmartBar</span></font>高度</h2>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">FlymeApi</span></font>中提供了方法用于获取<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>和<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>高度</p>
+<p class="cjk" style="margin-left: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">ActionBar</span></font>高度：<font face="Times New Roman, serif"><span lang="en-US">ActionBarProxy#getActionBarHeight</span></font></p>
+<p class="cjk" style="margin-left: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">SmartBar</span></font>高度：<font face="Times New Roman, serif"><span lang="en-US">ActionBarProxy#getSmartBarHeight</span></font></p>
+<p class="cjk" style="margin-left: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<br>
+</p>
+<h1 class="cjk"><a name="__RefHeading__205_808596310"></a>二、沉浸式状态栏</h1>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+实现<font face="Times New Roman, serif"><span lang="en-US">Flyme4.0</span></font>沉浸模式状态栏，主要包括两方面：</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">1.</span></font>将状态栏置为透明，使应用窗口全屏，状态栏覆盖在应用窗口之上，实现状态栏透明有两种方式：</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+方式一：在代码中设置，可以直接通过调用<font face="Times New Roman, serif"><span lang="en-US">StatusBarProxy.setImmersedWindow(Window
+window, boolean immersed);</span></font>如果是<font face="Times New Roman, serif"><span lang="en-US">AndroidSDK
+19</span></font>以上，也可以直接通过设置窗口<font face="Times New Roman, serif"><span lang="en-US">flag(FLAG_TRANSLUCENT_STATUS)</span></font>实现状态栏透明效果。使用方法比较简单，在<font face="Times New Roman, serif"><span lang="en-US">Activity#onCreate(Bundle
+savedInstanceState)</span></font>方法中调用即可，请参考<font face="Times New Roman, serif"><span lang="en-US">FlymeApiDemo</span></font>。</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">使用这种方式的优点是每一个窗口可以根据需求灵活设置，缺点是应用无法设置通过这种方式设置<font face="Times New Roman, serif"><span lang="en-US">StartingWindow</span></font>的状态栏，而如果首页需要状态栏透明，就会出现启动过程中状态栏先闪现黑色背景再变为透明，解决办法参考方式二。</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+方式二：在<font face="Times New Roman, serif"><span lang="en-US">Theme</span></font>中设置属性</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">    <font face="Times New Roman, serif"><span lang="en-US">&lt;style
+name="FlymeTheme"
+parent="@android:style/Theme.DeviceDefault.Light"&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">         <font face="Times New Roman, serif"><span lang="en-US">&lt;item
+name="android:windowTranslucentStatus"&gt;true&lt;/item&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">    <font face="Times New Roman, serif"><span lang="en-US">&lt;/style&gt;</span></font></p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">在<font face="Times New Roman, serif"><span lang="en-US">AndroidManifest</span></font>的<font face="Times New Roman, serif"><span lang="en-US">&lt;application&gt;</span></font>使用自定义的<font face="Times New Roman, serif"><span lang="en-US">Theme</span></font>，这样该<font face="Times New Roman, serif"><span lang="en-US">App</span></font>所有窗口都能呈现状态栏透明的效果。</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">2.</span></font>由于系统默认状态栏图标文字为白色，在状态栏背景透明界面上，如果应用顶栏为浅色背景，那么状态栏图标、文字在浅色背景将难以识别。解决办法是通过<font face="Times New Roman, serif"><span lang="en-US">StatusBarProxy.setStatusBarDarkIcon(Window
+window, boolean
+dark)</span></font>，应用根据实际需要设置状态栏图标及文字的颜色。使用方法在<font face="Times New Roman, serif"><span lang="en-US">Activity#onCreate(Bundle
+savedInstanceState)</span></font>方法中调用即可，请参考<font face="Times New Roman, serif"><span lang="en-US">FlymeApiDemo</span></font>。</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"> 
+</p>
+<h1 class="cjk"><a name="__RefHeading__207_808596310"></a>三、白色系统键盘</h1>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">Flyme4.0</span></font>系统输入法有黑色和白色两种风格，系统应用弹出输入法基本都为白色，那么对于第三方应用，<font face="Times New Roman, serif"><span lang="en-US">FlymeApi</span></font>中也提供了方法设置白色系统输入法<font face="Times New Roman, serif"><span lang="en-US">InputMethodProxy.setInputThemeLight(Context
+context, boolean light);</span></font>该方法只需在应用<font face="Times New Roman, serif"><span lang="en-US">Activity#onCreate(Bundle
+savedInstanceState)</span></font>方法中调用一次即可，请参考<font face="Times New Roman, serif"><span lang="en-US">FlymeApiDemo</span></font>。</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT">注意，该方法仅对系统输入法生效，对其他第三方输入法不起效。</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"> 
+</p>
+<h1 class="cjk"><a name="__RefHeading__209_808596310"></a>四、锁屏壁纸</h1>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">Android</span></font>原生系统壁纸不区分锁屏壁纸和主屏幕壁纸，<font face="Times New Roman, serif"><span lang="en-US">FlymeOS</span></font>增加了设置锁屏壁纸的方法<font face="Times New Roman, serif"><span lang="en-US">WallpaperManagerProxy.setLockWallpaper(Context
+context, String
+path)</span></font>，该方法不影响原生设置主屏壁纸方法，两者独立，分别设置锁屏和主屏壁纸。具体用法参考<font face="Times New Roman, serif"><span lang="en-US">FlymeApiDemo</span></font>。</p>
+<p class="cjk" style="margin-bottom: 0cm" align="LEFT"> 
+</p>
+<h1 class="cjk"><a name="__RefHeading__211_808596310"></a>五、<font face="Times New Roman, serif"><span lang="en-US">Notification</span></font>通知栏</h1>
+<h2 class="cjk"><a name="__RefHeading__213_808596310"></a><font face="Arial, sans-serif"><span lang="en-US">1.</span></font>设置<font face="Arial, sans-serif"><span lang="en-US">Notification</span></font>圆环<font face="Arial, sans-serif"><span lang="en-US">ProgressBar</span></font>的形状</h2>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+在<font face="Times New Roman, serif"><span lang="en-US">FlymeOS</span></font>中包括原生系统自带的直线<font face="Times New Roman, serif"><span lang="en-US">ProgressBar</span></font>和<font face="Times New Roman, serif"><span lang="en-US">Flyme</span></font>风格的圆环形<font face="Times New Roman, serif"><span lang="en-US">ProgressBar</span></font>（简称<font face="Times New Roman, serif"><span lang="en-US">CircleProgressBar</span></font>），使用<font face="Times New Roman, serif"><span lang="en-US">CircleProgressBar</span></font>的接口如下：</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">NotificationProxy.
+setProgressBarStype(Builder builder, boolean isCircle)</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+函数变量<font face="Times New Roman, serif"><span lang="en-US">builder</span></font>为<font face="Times New Roman, serif"><span lang="en-US">android.app.Notification.Builder</span></font>类型，<font face="Times New Roman, serif"><span lang="en-US">isCircle</span></font>为<font face="Times New Roman, serif"><span lang="en-US">true</span></font>时表示使用圆环形<font face="Times New Roman, serif"><span lang="en-US">ProgressBar</span></font>。使用方法如下：</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">final
+Notification.Builder builder = new Notification.Builder(context);</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font face="Times New Roman, serif"><span lang="en-US">builder.setLargeIcon(mIcon)</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+   <font face="Times New Roman, serif"><span lang="en-US">.setSmallIcon(R.drawable.ic_launcher)</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+   <font face="Times New Roman, serif"><span lang="en-US">.setTicker("CirlceProgressBarNotification")</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+   <font face="Times New Roman, serif"><span lang="en-US">.setContentTitle("ContentTitle")</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+   <font face="Times New Roman, serif"><span lang="en-US">.setContentInfo("ContentInfo")
+      </span></font>
+</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+   <font face="Times New Roman, serif"><span lang="en-US">.setContentText("ContentText")
+   </span></font>
+</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+   <font face="Times New Roman, serif"><span lang="en-US">.setWhen(0)</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+   <font face="Times New Roman, serif"><span lang="en-US">.setOngoing(true);
+       	        </span></font>
+</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font color="#ff0000"><font face="Times New Roman, serif"><span lang="en-US">NotificationProxy.setProgressBarStype(builder,
+true);</span></font></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font color="#ff0000"><font face="Times New Roman, serif"><span lang="en-US">NotificationProxy.setCircleProgressBarColor(0xff000000);</span></font></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<font color="#ff0000"><font face="Times New Roman, serif"><span lang="en-US">NotificationProxy.setCircleProgressRimColor(0x00ff0000);</span></font></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+……</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+详细代码请参考<font face="Times New Roman, serif"><span lang="en-US">FlymeApiDemos</span></font>的实例。</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+<br>
+</p>
+<h2 class="cjk"><a name="__RefHeading__215_808596310"></a><font face="Arial, sans-serif"><span lang="en-US">2.</span></font>设置<font face="Arial, sans-serif"><span lang="en-US">Notification</span></font>圆环<font face="Arial, sans-serif"><span lang="en-US">ProgressBar</span></font>的颜色</h2>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+在设置进度条<font face="Times New Roman, serif"><span lang="en-US">ProgressBar</span></font>为圆环形状之后，还可以设置圆环进度的颜色和整个圆环边框的颜色，这两个接口分别为：</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+（<font face="Times New Roman, serif"><span lang="en-US">1</span></font>）<font face="Times New Roman, serif"><span lang="en-US">NotificationProxy.
+setCircleProgressBarColor (int color)</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+（<font face="Times New Roman, serif"><span lang="en-US">2</span></font>）<font face="Times New Roman, serif"><span lang="en-US">NotificationProxy.
+setCircleProgressRimColor(int color)</span></font></p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+函数变量中<font face="Times New Roman, serif"><span lang="en-US">color</span></font>表示颜色值。</p>
+<p class="cjk" style="text-indent: 0.74cm; margin-bottom: 0cm" align="LEFT">
+注意：这两个接口必需在设置<font face="Times New Roman, serif"><span lang="en-US">ProgressBar</span></font>为圆环（也就是调用<font face="Times New Roman, serif"><span lang="en-US">setProgressBarStype</span></font>函数并且设为<font face="Times New Roman, serif"><span lang="en-US">true</span></font>）之后才会生效。如果没有设置<font face="Times New Roman, serif"><span lang="en-US">CircleProgress</span></font>的颜色，那么则采用默认的颜色。<font color="#ff0000">为了使应用和<font face="Times New Roman, serif"><span lang="en-US">Flyme</span></font></font><font color="#ff0000">风格统一，推荐不要设置<font face="Times New Roman, serif"><span lang="en-US">CircleProgressBar</span></font></font><font color="#ff0000">的颜色。</font></p>
+<div type="FOOTER">
+	<p style="margin-top: 0.69cm; margin-bottom: 0cm" align="LEFT"><br>
+	</p>
+</div>
+
+</body></html>

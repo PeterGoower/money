@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item android:id="@+id/action_share"
+          android:icon="@drawable/ic_sb_praise"
+          android:title="Share"
+          android:showAsAction="ifRoom" />
+    
+    <item android:id="@+id/action_sort"
+          android:icon="@drawable/ic_sb_privacy"
+          android:title="Sort"
+          android:showAsAction="ifRoom">
+        <menu>
+            <item android:id="@+id/action_sort_size"
+                  android:icon="@drawable/ic_sb_project"
+                  android:title="Sort By Size"
+                  android:onClick="onSort" />
+            
+            <item android:id="@+id/action_sort_alpha"
+                  android:icon="@drawable/ic_sb_rambler"
+                  android:title="Sort By Alpha"
+                  android:onClick="onSort" />
+        </menu>
+    </item>
+    
+</menu>

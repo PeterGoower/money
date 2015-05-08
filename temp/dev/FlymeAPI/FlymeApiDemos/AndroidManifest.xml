@@ -1,0 +1,152 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.flyme.apis"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="19" />
+    
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/FlymeTheme"
+        android:uiOptions="splitActionBarWhenNarrow"
+        >
+        
+        <activity android:name="ApiDemos">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- ************************************* -->
+        <!--      APPLICATION PACKAGE SAMPLES      -->
+        <!-- ************************************* -->
+
+        <!-- SmartBar Samples -->
+
+        <activity android:name=".smartbar.HasSmartBar"
+                android:label="@string/has_smart_bar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FLYME_SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".smartbar.SmartBarBackButton"
+                android:label="@string/custom_back_button">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FLYME_SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".smartbar.HideActionBarTop"
+                android:label="@string/hide_actionbar_top"
+                android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FLYME_SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".smartbar.TabOnSmartBar"
+                android:label="@string/smartbar_tab"
+                android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FLYME_SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        
+        <activity android:name=".smartbar.MenuOnSmartBar"
+                android:label="@string/smartbar_menu"
+                android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FLYME_SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".smartbar.CustomTabOnTopActivity"
+                android:label="@string/smartbar_menu"
+                android:uiOptions="splitActionBarWhenNarrow">
+        </activity>
+        <activity android:name=".smartbar.ContactsActivity"
+                android:label="@string/smartbar_menu"
+                android:uiOptions="splitActionBarWhenNarrow">
+        </activity>
+        <activity android:name=".smartbar.DialerActivity"
+                android:label="@string/smartbar_menu"
+                android:uiOptions="splitActionBarWhenNarrow">
+        </activity>
+        
+        <activity android:name=".smartbar.ActionBarStyle"
+                android:label="@string/actionbar_style"
+                android:uiOptions="splitActionBarWhenNarrow"
+                android:theme="@style/FlymeTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FLYME_SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        
+        <!-- InputMethod Samples -->
+        
+        <activity android:name=".inputmethod.AppInputThemeWhite"
+                android:label="@string/inputmethod_white_theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FLYME_SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        
+        <!-- StatusBar Samples -->
+        
+        <activity android:name=".statusbar.StatusBarDark"
+                android:label="@string/statusbar_icon_white_theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FLYME_SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".statusbar.StatusBarImmer"
+                android:label="@string/statusbar_transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FLYME_SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        
+        <!-- WallPaper Samples -->
+        
+        <activity android:name=".wallpaper.WallPaperFromPath"
+                android:label="@string/wallpaper_custom">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FLYME_SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Notification Samples -->
+        <activity android:name=".notification.NotificationActivity"
+            android:label="@string/notification">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FLYME_SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

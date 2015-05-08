@@ -3,34 +3,37 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/gray">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:paddingTop="35dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="?attr/color_app"
+        android:layout_alignParentTop="true"
+        android:text="@string/app_name"/>
+    
     <RelativeLayout 
         android:id="@+id/area1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_below="@id/title"
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:paddingBottom="40dp"
+        android:paddingBottom="20dp"
         android:background="@color/white">
-        <TextView 
-            android:id="@+id/lab1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:text="攒钱总额"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:background="?attr/color_app"
-            android:padding="8dp"
-            android:gravity="center"
-            android:layout_alignParentTop="true">     
-        </TextView>
+       
         <TextView 
             android:id="@+id/num1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" 
             android:text="123809"
             android:textSize="80sp"
-            android:layout_below="@id/lab1"
+            android:layout_alignParentTop="true"
             android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
             android:textColor="@color/line">     
@@ -40,7 +43,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content" 
             android:layout_below="@id/num1"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true">
             <TextView 
                 android:id="@+id/lab3"
@@ -68,7 +71,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content" 
             android:layout_below="@id/num1"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_toLeftOf="@id/show3"
             android:layout_centerHorizontal="true">
             <TextView 
@@ -97,7 +100,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content" 
             android:layout_below="@id/num1"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/show3"
             android:layout_centerHorizontal="true">
             <TextView 
@@ -123,37 +126,52 @@
         </RelativeLayout>
     </RelativeLayout>
     <RelativeLayout 
-        android:id="@+id/area2"
+            android:id="@+id/area2"
+            android:layout_width="match_parent"
+            android:layout_height="130dp" 
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/white"
+            android:layout_below="@id/area1">
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="1dp" 
+                android:layout_alignParentTop="true"
+                android:background="@color/gray">     
+            </View>
+    </RelativeLayout>
+    <LinearLayout 
+        android:id="@+id/area3"
+        android:layout_below="@id/area2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="50dp"
-        android:layout_alignParentBottom="true"> 
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"> 
         <Button 
+            android:layout_marginRight="5dp"
             android:id="@+id/btn1"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp" 
             android:text="用户名"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:gravity="center"
             android:background="?attr/color_app"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true">     
+            android:layout_weight="1">     
         </Button>
         <Button 
+            android:layout_marginLeft="5dp"
             android:id="@+id/btn2"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp" 
             android:text="注销"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:gravity="center"
             android:background="?attr/color_app"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true">     
+            android:layout_weight="1">     
         </Button>
-    </RelativeLayout>
+    </LinearLayout>
 </RelativeLayout>

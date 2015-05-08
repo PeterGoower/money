@@ -1,21 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <style name="Blue" parent="@android:style/Theme"> 
+    <style name="Blue" parent="@android:style/Theme.DeviceDefault.Light"> 
         <item name="color_app">@color/theme_blue</item> 
+        
+        <item name="android:actionBarStyle">@style/FlymeActionBarStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/FlymeActionButtonOverflowStyle</item>
+        <item name="android:actionButtonStyle">@style/FlymeActionButtonStyle</item>
     </style>  
-    <style name="Green" parent="@android:style/Theme">  
+    <style name="Green" parent="@android:style/Theme.DeviceDefault.Light">  
         <item name="color_app">@color/theme_green</item> 
+        
+        <item name="android:actionBarStyle">@style/FlymeActionBarStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/FlymeActionButtonOverflowStyle</item>
+        <item name="android:actionButtonStyle">@style/FlymeActionButtonStyle</item>
     </style>
-     <style name="Red" parent="@android:style/Theme">  
+     <style name="Red" parent="@android:style/Theme.DeviceDefault.Light">  
         <item name="color_app">@color/theme_red</item> 
+        
+        <item name="android:actionBarStyle">@style/FlymeActionBarStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/FlymeActionButtonOverflowStyle</item>
+        <item name="android:actionButtonStyle">@style/FlymeActionButtonStyle</item>
     </style>  
-     <style name="Pink" parent="@android:style/Theme">  
+     <style name="Pink" parent="@android:style/Theme.DeviceDefault.Light">  
         <item name="color_app">@color/theme_pink</item> 
+        
+        <item name="android:actionBarStyle">@style/FlymeActionBarStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/FlymeActionButtonOverflowStyle</item>
+        <item name="android:actionButtonStyle">@style/FlymeActionButtonStyle</item>
     </style>  
-     <style name="Yellow" parent="@android:style/Theme">  
+     <style name="Yellow" parent="@android:style/Theme.DeviceDefault.Light">  
         <item name="color_app">@color/theme_yellow</item> 
+        
+        <item name="android:actionBarStyle">@style/FlymeActionBarStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/FlymeActionButtonOverflowStyle</item>
+        <item name="android:actionButtonStyle">@style/FlymeActionButtonStyle</item>
     </style>  
-     <style name="Glu" parent="@android:style/Theme">  
+     <style name="Glu" parent="@android:style/Theme.DeviceDefault.Light">  
         <item name="color_app">@color/theme_glu</item> 
-    </style>    
+        
+        <item name="android:actionBarStyle">@style/FlymeActionBarStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/FlymeActionButtonOverflowStyle</item>
+        <item name="android:actionButtonStyle">@style/FlymeActionButtonStyle</item>
+    </style>   
+     
+    <style name="FlymeTheme" parent="@android:style/Theme.DeviceDefault.Light">
+        <item name="android:actionBarStyle">@style/FlymeActionBarStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/FlymeActionButtonOverflowStyle</item>
+        <item name="android:actionButtonStyle">@style/FlymeActionButtonStyle</item>
+    </style>
+    <!-- overflow图标 -->
+    <style name="FlymeActionButtonOverflowStyle" parent="@android:style/Widget.DeviceDefault.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/mz_ic_sb_more</item>
+    </style>
+    
+    <!-- back键图标 通过style定制back键图标只在flyme4.0系统有效-->
+    <style name="FlymeActionButtonStyle" parent="@android:style/Widget.DeviceDefault.Light.ActionButton">
+        <item name="android:src">@drawable/mz_ic_sb_back</item>
+    </style>
+    
+    <!-- smartbar及actionbar顶栏背景 -->
+    <style name="FlymeActionBarStyle" parent="@android:style/Widget.DeviceDefault.Light.ActionBar">
+        <item name="android:background">@drawable/mz_titlebar_background</item>
+        <item name="android:backgroundSplit">@drawable/mz_smartbar_background</item>
+    </style>
 </resources>
