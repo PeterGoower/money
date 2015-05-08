@@ -22,7 +22,6 @@
          <item name="android:actionBarStyle">@style/FlymeActionBarStyle</item>
          <item name="android:actionOverflowButtonStyle">@style/FlymeActionButtonOverflowStyle</item>
          <item name="android:actionButtonStyle">@style/FlymeActionButtonStyle</item>
-         <item name="android:windowTranslucentStatus">true</item>
     </style>
     
     <!-- overflow图标 -->
