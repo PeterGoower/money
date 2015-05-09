@@ -19,6 +19,7 @@ public class Global {
 	
 	public static void changeTheme(Context con, int theme){
 		Setting.setInt(con, THEME_CURR, theme);
+		setTheme(con);
 	}
 
 }
