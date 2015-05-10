@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BulrDrawableDemo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="datetime">DateTime</string>
+    <string name="blur_level">模糊等级</string>
+    <string name="blur_alpha">透明度</string>
+    <string name="blur_color">颜色</string>
+    <string name="blur_area">此区域为毛玻璃显示区域</string>
+
+</resources>

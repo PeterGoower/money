@@ -26,4 +26,11 @@
     <string name="iknow">我知道了</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
+    <string name="home_total">存钱总额</string>
+    <string name="home_recent">最近新增</string>
+    <string name="home_progress">计划进度</string>
+    <string name="home_average">月均新增</string>
+    <string name="home_history">历史记录</string>
+    <string name="home_add">添加记录</string>
+    <string name="ask_quit">再点一次就退出了</string>
 </resources>

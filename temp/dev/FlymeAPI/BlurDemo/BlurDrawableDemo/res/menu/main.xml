@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.meizu.flyme.bulrdrawabledemo.MainActivity" >
+    <item
+        android:id="@+id/blur_level"
+        android:icon="@drawable/ic_edit_brightness"
+        android:showAsAction="always"
+        android:title="@string/blur_level"
+        />
+    <item
+        android:id="@+id/blur_alpha"
+        android:icon="@drawable/ic_edit_contrast"
+        android:showAsAction="always"
+        android:title="@string/blur_alpha"
+        />
+    <item
+        android:id="@+id/blur_color"
+        android:icon="@drawable/ic_edit_saturability"
+        android:showAsAction="always"
+        android:title="@string/blur_color"
+        />
+
+</menu>

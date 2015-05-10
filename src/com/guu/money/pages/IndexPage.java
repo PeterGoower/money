@@ -59,8 +59,8 @@ public class IndexPage extends Fragment {
 			
 			}
 		});
-		AVUser currentUser = AVUser.getCurrentUser();
-		setBtn.setText(currentUser.getUsername());
+//		AVUser currentUser = AVUser.getCurrentUser();
+//		setBtn.setText(currentUser.getUsername());
 		
 		setBtn2 = (Button) indexView.findViewById(R.id.btn2);
 		setBtn2.setOnClickListener(new OnClickListener() {

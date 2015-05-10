@@ -8,7 +8,7 @@
     <color name="hint_white">#f2f2f2</color>
     <color name="line">#9f9f9f</color>
     <color name="glass">#00000000</color>
-    <color name="glass_dark">#88000000</color>
+    <color name="glass_dark">#aa000000</color>
     
     <color name="theme_blue">#00a0e9</color>
     <color name="theme_green">#92ce5d</color>
