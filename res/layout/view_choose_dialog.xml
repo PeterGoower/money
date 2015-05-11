@@ -2,23 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:background="?attr/color_app">
+    </TextView>
     <RelativeLayout android:layout_centerInParent="true"
-        android:layout_width="300dp"
-        android:layout_height="180dp"
-        android:background="@drawable/waitting_bg">
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:background="#88000000">
         <TextView
             android:id="@+id/info"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_margin="10dp"
             android:textColor="@color/white"
             android:gravity="center"
-            android:paddingBottom="50dp"
+            android:paddingBottom="40dp"
             android:textSize="18sp"
             android:layout_centerInParent="true">
         </TextView>
         <LinearLayout android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:orientation="horizontal"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true">
@@ -31,11 +37,8 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/dialog_btn">     
+                android:layout_marginRight="1px"
+                android:background="?attr/color_app">     
             </Button>
             <Button 
                 android:id="@+id/right"
@@ -46,11 +49,8 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/dialog_btn">     
+                android:layout_marginLeft="1px"
+                android:background="?attr/color_app">     
             </Button>
         </LinearLayout>
     </RelativeLayout>

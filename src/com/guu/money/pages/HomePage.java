@@ -1,20 +1,17 @@
 package com.guu.money.pages;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import com.guu.money.R;
 import com.guu.money.listener.MyTabListener;
-import com.guu.money.listener.TipEvent;
 import com.guu.money.views.Tip;
 import com.meizu.flyme.reflect.ActionBarProxy;
 
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 
-public class HomePage extends BasePage implements TipEvent{
-	private Tip tip = new Tip(this,this);
-	private Timer timer;
+public class HomePage extends BasePage{
+	private Tip tip = new Tip(this,null);
 	private long exitTime = 0;
 	
     @Override
@@ -38,11 +35,10 @@ public class HomePage extends BasePage implements TipEvent{
     
     @Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		
-		if (keyCode == KeyEvent.KEYCODE_BACK) 
+		if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) 
 		{
 			if((System.currentTimeMillis() - exitTime) > 5000){  
-				tip.showHint(R.string.ask_quit);
+				tip.showHint(R.string.ask_quit, 1000);
 	            exitTime = System.currentTimeMillis();   
 	        } else {
 	            finish();
@@ -52,22 +48,5 @@ public class HomePage extends BasePage implements TipEvent{
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
-	}
-
-	@Override
-	public void onHintDismiss(int eventTag) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onChoose(int which, int eventTag) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void onConfirm(int eventTag) {
-		// TODO Auto-generated method stub
-		
 	}
 }

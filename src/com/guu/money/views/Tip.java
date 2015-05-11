@@ -75,6 +75,10 @@ public class Tip {
     	showHint(context.getResources().getString(hint), HINT_DIS_DELAY);
 	}
     
+    public void showHint(int hint, int showtime) {
+    	showHint(context.getResources().getString(hint), showtime);
+	}
+    
     public void showHint(String hint, int showtime) {
     	eventTag = -100;
 		Context mContext = context.getBaseContext();
@@ -108,7 +112,10 @@ public class Tip {
 			super.handleMessage(msg);
 			if(msg.what == HINT_DIS){
 				hintDialog.dismiss();
-				event.onHintDismiss(eventTag);
+				if(event != null){
+					event.onHintDismiss(eventTag);
+				}
+				
             	return;
             }
 		}
@@ -146,7 +153,9 @@ public class Tip {
 		    @Override
 	        public void onClick(View v) {
 		    	confirmDialog.dismiss();
-		    	event.onConfirm(eventTag);
+		    	if(event != null){
+		    		event.onConfirm(eventTag);
+		    	}
 	        }
 		});
 		
@@ -189,7 +198,9 @@ public class Tip {
 		    @Override
 	        public void onClick(View v) {
 		    	chooseDialog.dismiss();
-		    	event.onChoose(CHOOSE_LEFT, eventTag);
+		    	if(event != null){
+		    		event.onChoose(CHOOSE_LEFT, eventTag);
+		    	}
 	        }
 		});
 		
@@ -197,7 +208,9 @@ public class Tip {
 		    @Override
 	        public void onClick(View v) {
 		    	chooseDialog.dismiss();
-		    	event.onChoose(CHOOSE_RIGHT, eventTag);
+		    	if(event != null){
+		    		event.onChoose(CHOOSE_RIGHT, eventTag);
+		    	}
 	        }
 		});
 		

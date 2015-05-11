@@ -4,25 +4,25 @@
     android:layout_height="match_parent">
     <TextView
         android:layout_width="250dp"
-        android:layout_height="150dp"
+        android:layout_height="400dp"
         android:layout_centerInParent="true"
         android:background="?attr/color_app">
     </TextView>
     <RelativeLayout android:layout_centerInParent="true"
         android:layout_width="250dp"
-        android:layout_height="150dp"
+        android:layout_height="400dp"
         android:background="#88000000">
-        <TextView
-            android:id="@+id/info"
+        <GridView
+            android:id="@+id/grid"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textColor="@color/white"
-            android:gravity="center"
             android:paddingBottom="40dp"
-            android:textSize="18sp"
+            android:numColumns="2" 
+            android:background="@null" 
+            android:horizontalSpacing="10dp" 
+            android:verticalSpacing="10dp"
             android:layout_centerInParent="true">
-        </TextView>
+        </GridView>
         <Button 
             android:id="@+id/btn_confirm"
             android:layout_width="match_parent"

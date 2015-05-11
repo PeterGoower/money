@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/gray">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:paddingTop="35dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="?attr/color_app"
+        android:layout_alignParentTop="true"
+        android:text="设置" />
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:layout_below="@id/title"
+        android:layout_margin="20dp"
+        android:background="@color/white">     
+    </View>
+    
+    <RelativeLayout 
+            android:id="@+id/btn_logout"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/title"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/setting_bg" >
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:text="注销账号"
+                android:textSize="20sp"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/gray_text">     
+            </TextView>
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:text="当前账号：peter"
+                android:textSize="15sp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/gray_text">     
+            </TextView>
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="1dp" 
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/gray">     
+            </View>
+    </RelativeLayout>
+    
+    
+    
+    <Button 
+        android:id="@+id/btn_theme"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" 
+        android:text="切换主题"
+        android:textColor="@color/gray_text"
+        android:textSize="20sp"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="20dp"
+        android:background="@null">     
+    </Button>
+    
+</RelativeLayout>
