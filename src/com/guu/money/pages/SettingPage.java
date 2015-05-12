@@ -16,6 +16,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,11 +32,14 @@ import android.widget.TextView;
 
 public class SettingPage extends Fragment implements OnClickListener, OnItemClickListener, TipEvent{
 	public static final int TIP_LOGOUT = 0;
+	private AlertDialog dialog;
 	
 	private Activity activity;
 	private Tip tip;
 	private RelativeLayout logoutBtn;
-	private Button themeBtn;
+	private TextView logoutTip;
+	
+	private RelativeLayout themeBtn;
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,14 +50,17 @@ public class SettingPage extends Fragment implements OnClickListener, OnItemClic
     	
         logoutBtn = (RelativeLayout) settingView.findViewById(R.id.btn_logout);
         logoutBtn.setOnClickListener(this);
+        logoutTip = (TextView) settingView.findViewById(R.id.logout_tip);
+ 		AVUser currentUser = AVUser.getCurrentUser();
+ 		logoutTip.setText("注销 (" + currentUser.getUsername()+ ")");
         
-        themeBtn = (Button) settingView.findViewById(R.id.btn_theme);
+        themeBtn = (RelativeLayout) settingView.findViewById(R.id.btn_theme);
         themeBtn.setOnClickListener(this);
         return settingView;
     }
     
     private void showThemeDialog(){
-    	AlertDialog dialog;
+    	
     	LayoutInflater mInflater = LayoutInflater.from(activity);
 		View view = mInflater.inflate(R.layout.view_theme_dialog, null);
 		dialog = new AlertDialog.Builder(activity).create();
@@ -60,15 +68,9 @@ public class SettingPage extends Fragment implements OnClickListener, OnItemClic
 		
 		GridView gridView = (GridView) view.findViewById(R.id.grid);
         ThemeAdapter mAdapter = new ThemeAdapter(activity);
+        gridView.setSelector(new ColorDrawable(Color.TRANSPARENT));
         gridView.setAdapter(mAdapter);
 		gridView.setOnItemClickListener(this);
-		
-		Button confirm = (Button) view.findViewById(R.id.btn_confirm);
-		confirm.setOnClickListener(new View.OnClickListener(){
-		    @Override
-	        public void onClick(View v) {
-	        }
-		});
 		
 		dialog.getWindow().setContentView(view);
     }
@@ -78,7 +80,7 @@ public class SettingPage extends Fragment implements OnClickListener, OnItemClic
 		int id = v.getId();
 		switch(id){
 		    case R.id.btn_logout:
-		    	tip.showChoose("确定要注销当前登录的账号吗");
+		    	tip.showChoose("真的要登出账号吗？");
 				tip.setEventTag(TIP_LOGOUT);
 				break;
 		    case R.id.btn_theme:
@@ -86,6 +88,18 @@ public class SettingPage extends Fragment implements OnClickListener, OnItemClic
 				break;
 		}
 		
+	}
+    
+    @Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+    	int[] themes = {R.style.Blue, R.style.Glu, R.style.Green, R.style.Pink, R.style.Red, R.style.Yellow};
+    	Global.changeTheme(activity, themes[position]);
+    	ActionBar bar = activity.getActionBar();
+		bar.removeTab(bar.getTabAt(2));
+		bar.addTab(bar.newTab().setIcon(R.drawable.ic_tab_setting)
+				.setTabListener(new MyTabListener<SettingPage>(activity, "setting", SettingPage.class)),2,true);
+		dialog.dismiss();
 	}
 
 	@Override
@@ -125,8 +139,7 @@ public class SettingPage extends Fragment implements OnClickListener, OnItemClic
 		
 		Global.changeTheme(activity, themes[currIndex]);
 		
-//		AVUser currentUser = AVUser.getCurrentUser();
-//		setBtn.setText(currentUser.getUsername());
+
 		
 		
 		ActionBar bar = activity.getActionBar();
@@ -135,11 +148,4 @@ public class SettingPage extends Fragment implements OnClickListener, OnItemClic
 				.setTabListener(new MyTabListener<SettingPage>(activity, "setting", SettingPage.class)),2,true);
 	
     }
-
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		// TODO Auto-generated method stub
-		
-	}
 }

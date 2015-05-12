@@ -11,9 +11,9 @@
     <color name="glass_dark">#aa000000</color>
     
     <color name="theme_blue">#00a0e9</color>
-    <color name="theme_green">#92ce5d</color>
-    <color name="theme_red">#fc4324</color>
-    <color name="theme_yellow">#fea509</color>
-    <color name="theme_pink">#df4696</color>
-    <color name="theme_glu">#9e4aac</color>
+    <color name="theme_green">#23ba8f</color>
+    <color name="theme_red">#fea509</color>
+    <color name="theme_yellow">#fc4324</color>
+    <color name="theme_pink">#9e4aac</color>
+    <color name="theme_glu">#df4696</color>
 </resources>

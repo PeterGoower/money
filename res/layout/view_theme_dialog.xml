@@ -2,38 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="250dp"
-        android:layout_height="400dp"
-        android:layout_centerInParent="true"
-        android:background="?attr/color_app">
-    </TextView>
+    
     <RelativeLayout android:layout_centerInParent="true"
-        android:layout_width="250dp"
-        android:layout_height="400dp"
-        android:background="#88000000">
+        android:layout_width="220dp"
+        android:layout_height="320dp"
+        android:background="@color/glass_dark">
         <GridView
             android:id="@+id/grid"
-            android:layout_width="250dp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:paddingBottom="40dp"
             android:numColumns="2" 
             android:background="@null" 
-            android:horizontalSpacing="10dp" 
-            android:verticalSpacing="10dp"
+            android:horizontalSpacing="0dp" 
+            android:verticalSpacing="20dp"
             android:layout_centerInParent="true">
         </GridView>
-        <Button 
-            android:id="@+id/btn_confirm"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="@string/iknow"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:background="?attr/color_app">
-        </Button>
     </RelativeLayout>
 </RelativeLayout>

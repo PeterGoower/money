@@ -34,23 +34,13 @@
             android:layout_height="65dp"
             android:background="@drawable/setting_bg" >
             <TextView 
+                android:id="@+id/logout_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" 
-                android:text="注销账号"
+                android:text="登出"
                 android:textSize="20sp"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/gray_text">     
-            </TextView>
-            <TextView 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" 
-                android:text="当前账号：peter"
-                android:textSize="15sp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="10dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
                 android:textColor="@color/gray_text">     
             </TextView>
             <View 
@@ -63,20 +53,31 @@
             </View>
     </RelativeLayout>
     
-    
-    
-    <Button 
-        android:id="@+id/btn_theme"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@id/btn_logout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" 
-        android:text="切换主题"
-        android:textColor="@color/gray_text"
-        android:textSize="20sp"
-        android:gravity="left|center_vertical"
-        android:paddingLeft="20dp"
-        android:background="@null">     
-    </Button>
+    <RelativeLayout 
+            android:id="@+id/btn_theme"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/setting_bg" >
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:text="主题"
+                android:textSize="20sp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/gray_text">     
+            </TextView>
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="1dp" 
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/gray">     
+            </View>
+    </RelativeLayout>
     
 </RelativeLayout>
