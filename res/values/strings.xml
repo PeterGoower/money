@@ -33,6 +33,6 @@
     <string name="home_history">查看账目</string>
     <string name="home_add">每月一记</string>
     <string name="ask_quit">再点一次就退出了</string>
-    <string name="edit_items">编辑条目</string>
-    <string name="init_items">现金余额|工资卡|公积金|余额宝</string>
+    <string name="edit_items">编辑财产类型</string>
+    <string name="init_items">现金|工资卡|公积金|余额宝</string>
 </resources>
