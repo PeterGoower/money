@@ -29,7 +29,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".pages.HomePage" >
-            
+        </activity>
+        <activity android:name=".pages.AddPage" >
         </activity>
     </application>
 

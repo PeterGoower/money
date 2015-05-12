@@ -2,21 +2,27 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="Blue" parent="@android:style/Theme.DeviceDefault.Light"> 
         <item name="color_app">@color/theme_blue</item> 
+        <item name="android:actionMenuTextColor">?attr/color_app</item>
     </style>  
     <style name="Green" parent="@android:style/Theme.DeviceDefault.Light">  
         <item name="color_app">@color/theme_green</item> 
+        <item name="android:actionMenuTextColor">?attr/color_app</item>
     </style>
      <style name="Red" parent="@android:style/Theme.DeviceDefault.Light">  
         <item name="color_app">@color/theme_red</item> 
+        <item name="android:actionMenuTextColor">?attr/color_app</item>
     </style>  
      <style name="Pink" parent="@android:style/Theme.DeviceDefault.Light">  
         <item name="color_app">@color/theme_pink</item> 
+        <item name="android:actionMenuTextColor">?attr/color_app</item>
     </style>  
      <style name="Yellow" parent="@android:style/Theme.DeviceDefault.Light">  
         <item name="color_app">@color/theme_yellow</item> 
+        <item name="android:actionMenuTextColor">?attr/color_app</item>
     </style>  
      <style name="Glu" parent="@android:style/Theme.DeviceDefault.Light">  
         <item name="color_app">@color/theme_glu</item> 
+        <item name="android:actionMenuTextColor">?attr/color_app</item>
     </style>   
      
    
@@ -29,5 +35,5 @@
       <item name="android:windowBackground">@android:color/transparent</item>  
       <item name="android:backgroundDimEnabled">true</item>  
       <item name="android:backgroundDimAmount">0.6</item>  
-     </style>  
+   </style>
 </resources>
