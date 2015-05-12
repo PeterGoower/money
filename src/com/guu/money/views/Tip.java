@@ -8,6 +8,7 @@ import com.guu.money.listener.TipEvent;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -26,10 +27,10 @@ public class Tip {
 	private Activity context;
 	private TipEvent event;
 	private int eventTag;
-	private AlertDialog waittingDialog;
-	private AlertDialog hintDialog;
-	private AlertDialog confirmDialog;
-	private AlertDialog chooseDialog;
+	private Dialog waittingDialog;
+	private Dialog hintDialog;
+	private Dialog confirmDialog;
+	private Dialog chooseDialog;
 	private Timer timer;
 	
 	public Tip(Activity context, TipEvent event){
@@ -47,9 +48,9 @@ public class Tip {
 		Context mContext = context.getBaseContext();
 		LayoutInflater mInflater = LayoutInflater.from(mContext);
 		View view = mInflater.inflate(R.layout.view_waitting_dialog, null);
-		waittingDialog = new AlertDialog.Builder(context).create();
-		waittingDialog.show();
-		waittingDialog.getWindow().setContentView(view);
+		waittingDialog = new Dialog(context, R.style.GuuDialog); 
+		waittingDialog.setContentView(view);  
+		waittingDialog.show(); 
 	}
 
 	public void dismissWaitting() {
@@ -84,13 +85,14 @@ public class Tip {
 		Context mContext = context.getBaseContext();
 		LayoutInflater mInflater = LayoutInflater.from(mContext);
 		View view = mInflater.inflate(R.layout.view_hint_dialog, null);
-		hintDialog = new AlertDialog.Builder(context).create();
-		hintDialog.show();
+		hintDialog = new Dialog(context, R.style.GuuDialog); 
 		
 		TextView title = (TextView) view.findViewById(R.id.title);
 		title.setText(hint);
 		
-		hintDialog.getWindow().setContentView(view);
+		hintDialog.setContentView(view);  
+		hintDialog.show(); 
+		
 		timer = new Timer(true);
 		TimerTask task = new TimerTask(){  
 			public void run() { 
@@ -140,8 +142,7 @@ public class Tip {
 		Context mContext = context.getBaseContext();
 		LayoutInflater mInflater = LayoutInflater.from(mContext);
 		View view = mInflater.inflate(R.layout.view_confirm_dialog, null);
-		confirmDialog = new AlertDialog.Builder(context).create();
-		confirmDialog.show();
+		confirmDialog = new Dialog(context, R.style.GuuDialog); 
 		
 		TextView info = (TextView) view.findViewById(R.id.info);
 		info.setText(infoString);
@@ -159,7 +160,8 @@ public class Tip {
 	        }
 		});
 		
-		confirmDialog.getWindow().setContentView(view);
+		confirmDialog.setContentView(view);  
+		confirmDialog.show(); 
 	}
 	
 	
@@ -183,8 +185,7 @@ public class Tip {
 		Context mContext = context.getBaseContext();
 		LayoutInflater mInflater = LayoutInflater.from(mContext);
 		View view = mInflater.inflate(R.layout.view_choose_dialog, null);
-		chooseDialog = new AlertDialog.Builder(context).create();
-		chooseDialog.show();
+		chooseDialog = new Dialog(context, R.style.GuuDialog); 
 		
 		TextView info = (TextView) view.findViewById(R.id.info);
 		info.setText(infoString);
@@ -214,6 +215,7 @@ public class Tip {
 	        }
 		});
 		
-		chooseDialog.getWindow().setContentView(view);
+		chooseDialog.setContentView(view);  
+		chooseDialog.show(); 
 	}
 }
