@@ -15,7 +15,7 @@
 -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/setting_s" />
+    <item android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/setting_blue" />
     <item android:drawable="@drawable/setting" />
 </selector>
 

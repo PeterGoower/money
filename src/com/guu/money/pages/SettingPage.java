@@ -96,8 +96,14 @@ public class SettingPage extends Fragment implements OnClickListener, OnItemClic
     	int[] themes = {R.style.Blue, R.style.Glu, R.style.Green, R.style.Pink, R.style.Red, R.style.Yellow};
     	Global.changeTheme(activity, themes[position]);
     	ActionBar bar = activity.getActionBar();
-		bar.removeTab(bar.getTabAt(2));
-		bar.addTab(bar.newTab().setIcon(R.drawable.ic_tab_setting)
+    	bar.removeTab(bar.getTabAt(2));
+    	bar.removeTab(bar.getTabAt(1));
+		bar.removeTab(bar.getTabAt(0));
+		bar.addTab(bar.newTab().setIcon(Global.getIndexIcon(activity))
+				.setTabListener(new MyTabListener<IndexPage>(activity, "index", IndexPage.class)),0,true);
+		bar.addTab(bar.newTab().setIcon(Global.getGalleryIcon(activity))
+				.setTabListener(new MyTabListener<GalleryPage>(activity, "gallery", GalleryPage.class)),1,true);
+		bar.addTab(bar.newTab().setIcon(Global.getSettingIcon(activity))
 				.setTabListener(new MyTabListener<SettingPage>(activity, "setting", SettingPage.class)),2,true);
 		dialog.dismiss();
 	}
@@ -121,31 +127,4 @@ public class SettingPage extends Fragment implements OnClickListener, OnItemClic
 	public void onHintDismiss(int eventTag) {
 		// TODO Auto-generated method stub
 	}
-	
-	public void changeTheme(){
-    	int[] themes = {R.style.Blue, R.style.Glu, R.style.Green, R.style.Pink, R.style.Red, R.style.Yellow};
-		int currTheme = Setting.getInt(SettingPage.this.getActivity(), Global.THEME_CURR);
-		int currIndex = 0;
-		for(int i=0; i<6; i++){
-			if(currTheme == themes[i]){
-				currIndex = i;
-				break;
-			}
-		}
-		currIndex++;
-		if(currIndex == 6){
-			currIndex = 0;
-		}
-		
-		Global.changeTheme(activity, themes[currIndex]);
-		
-
-		
-		
-		ActionBar bar = activity.getActionBar();
-		bar.removeTab(bar.getTabAt(2));
-		bar.addTab(bar.newTab().setIcon(R.drawable.ic_tab_setting)
-				.setTabListener(new MyTabListener<SettingPage>(activity, "setting", SettingPage.class)),2,true);
-	
-    }
 }

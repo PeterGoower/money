@@ -34,11 +34,11 @@ public class HomePage extends BasePage{
         super.onCreate(savedInstanceState);
         
         final ActionBar bar = getActionBar();
-        bar.addTab(bar.newTab().setIcon(R.drawable.ic_tab_index)
+        bar.addTab(bar.newTab().setIcon(Global.getIndexIcon(this))
 				.setTabListener(new MyTabListener<IndexPage>(this, "index", IndexPage.class)));
-		bar.addTab(bar.newTab().setIcon(R.drawable.ic_tab_gallery)
+		bar.addTab(bar.newTab().setIcon(Global.getGalleryIcon(this))
 				.setTabListener(new MyTabListener<GalleryPage>(this, "gallery", GalleryPage.class)));
-		bar.addTab(bar.newTab().setIcon(R.drawable.ic_tab_setting)
+		bar.addTab(bar.newTab().setIcon(Global.getSettingIcon(this))
 				.setTabListener(new MyTabListener<SettingPage>(this, "setting", SettingPage.class)));
         
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);

@@ -26,11 +26,15 @@ public class Global {
 	public static final String ITEM_EDIT_HINT_HIDE = "item_edit_hint_hide";
 	
 	public static void setTheme(Context con){
+		con.setTheme(getCurrTheme(con));
+	}
+	
+	public static int getCurrTheme(Context con){
 		int currTheme = Setting.getInt(con, THEME_CURR);
 		if(currTheme == -100){
 			currTheme = R.style.Blue;
 		}
-		con.setTheme(currTheme);
+		return currTheme;
 	}
 	
 	public static void changeTheme(Context con, int theme){
@@ -38,6 +42,85 @@ public class Global {
 		setTheme(con);
 	}
 	
+	public static int getIndexIcon(Context con){
+		int icon = 0;
+		int currTheme = getCurrTheme(con);
+		switch(currTheme){
+		case R.style.Blue:
+			icon = R.drawable.ic_tab_index_blue;
+			break;
+		case R.style.Green:
+			icon = R.drawable.ic_tab_index_green;
+			break;
+		case R.style.Red:
+			icon = R.drawable.ic_tab_index_red;
+			break;
+		case R.style.Yellow:
+			icon = R.drawable.ic_tab_index_yellow;
+			break;
+		case R.style.Glu:
+			icon = R.drawable.ic_tab_index_glu;
+			break;
+		case R.style.Pink:
+			icon = R.drawable.ic_tab_index_pink;
+			break;
+		}
+		
+		return icon;
+	}
 	
+	public static int getGalleryIcon(Context con){
+		int icon = 0;
+		int currTheme = getCurrTheme(con);
+		switch(currTheme){
+		case R.style.Blue:
+			icon = R.drawable.ic_tab_gallery_blue;
+			break;
+		case R.style.Green:
+			icon = R.drawable.ic_tab_gallery_green;
+			break;
+		case R.style.Red:
+			icon = R.drawable.ic_tab_gallery_red;
+			break;
+		case R.style.Yellow:
+			icon = R.drawable.ic_tab_gallery_yellow;
+			break;
+		case R.style.Glu:
+			icon = R.drawable.ic_tab_gallery_glu;
+			break;
+		case R.style.Pink:
+			icon = R.drawable.ic_tab_gallery_pink;
+			break;
+		}
+		
+		return icon;
+	}
+	
+	public static int getSettingIcon(Context con){
+		int icon = 0;
+		int currTheme = getCurrTheme(con);
+		switch(currTheme){
+		case R.style.Blue:
+			icon = R.drawable.ic_tab_setting_blue;
+			break;
+		case R.style.Green:
+			icon = R.drawable.ic_tab_setting_green;
+			break;
+		case R.style.Red:
+			icon = R.drawable.ic_tab_setting_red;
+			break;
+		case R.style.Yellow:
+			icon = R.drawable.ic_tab_setting_yellow;
+			break;
+		case R.style.Glu:
+			icon = R.drawable.ic_tab_setting_glu;
+			break;
+		case R.style.Pink:
+			icon = R.drawable.ic_tab_setting_pink;
+			break;
+		}
+		
+		return icon;
+	}
 
 }
