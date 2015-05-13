@@ -4,6 +4,7 @@ import com.avos.avoscloud.AVObject;
 import com.guu.money.R;
 import com.guu.money.utils.Global;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -35,7 +36,8 @@ public class AddPage extends BasePage{
     public boolean onOptionsItemSelected(MenuItem item) {  
         switch (item.getItemId()) {  
         case 0:  
-            test();
+        	Intent intent = new Intent(this, ItemsPage.class);
+	        startActivity(intent);
             break;  
         
         default:  

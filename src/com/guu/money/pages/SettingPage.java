@@ -80,7 +80,7 @@ public class SettingPage extends Fragment implements OnClickListener, OnItemClic
 		int id = v.getId();
 		switch(id){
 		    case R.id.btn_logout:
-		    	tip.showChoose("真的要登出账号吗？");
+		    	tip.showChoose("真的要注销账号吗？");
 				tip.setEventTag(TIP_LOGOUT);
 				break;
 		    case R.id.btn_theme:

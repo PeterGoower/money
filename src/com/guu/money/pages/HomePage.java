@@ -78,7 +78,6 @@ public class HomePage extends BasePage{
     	String itemIni = this.getResources().getString(R.string.init_items);
     	itemNameIni = itemIni.split("\\|");
     	itemCountInit= itemNameIni.length;
-    	Global.currItemData = new ArrayList<AVObject>();
     	initItemSave();
     }
     
@@ -88,7 +87,6 @@ public class HomePage extends BasePage{
     	item.put(Global.DATA_NAME_NAME, itemNameIni[itemSaveIndexInit]);
     	item.put(Global.DATA_NAME_INDEX, itemSaveIndexInit);
         item.setACL(Global.currAcl);
-        Global.currItemData.add(item);
         
     	item.saveInBackground(new SaveCallback() {
     	    public void done(AVException e) {
@@ -99,6 +97,7 @@ public class HomePage extends BasePage{
     	        		initItemSave();
     	        	}else if(itemSaveIndexInit == itemCountInit - 1){
     	        		Log.d("Goower", "ok");
+    	        		initData();
     	        	}
     	        }
     	    }
@@ -106,6 +105,7 @@ public class HomePage extends BasePage{
     }
     
     private void fetchAllData(){
+    	Log.d("Goower", "data init ok");
     	
     }
 //    Fragment fragment =(Fragment)getFragmentManager().findFragmentByTag("index");

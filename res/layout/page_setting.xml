@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/gray">
+    android:background="@color/white">
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -16,19 +16,10 @@
         android:layout_alignParentTop="true"
         android:text="设置" />
     
-    <View 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" 
-        android:layout_below="@id/title"
-        android:layout_margin="20dp"
-        android:background="@color/white">     
-    </View>
+   
     
     <RelativeLayout 
             android:id="@+id/btn_logout"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
             android:layout_below="@id/title"
             android:layout_width="match_parent"
             android:layout_height="65dp"
@@ -37,8 +28,8 @@
                 android:id="@+id/logout_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" 
-                android:text="登出"
-                android:textSize="20sp"
+                android:text="注销账户"
+                android:textSize="17sp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
                 android:textColor="@color/gray_text">     
@@ -47,16 +38,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" 
                 android:layout_alignParentBottom="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@color/gray">     
             </View>
     </RelativeLayout>
     
     <RelativeLayout 
             android:id="@+id/btn_theme"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_below="@id/btn_logout"
             android:layout_width="match_parent"
             android:layout_height="65dp"
@@ -64,8 +53,8 @@
             <TextView 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" 
-                android:text="主题"
-                android:textSize="20sp"
+                android:text="颜色主题"
+                android:textSize="17sp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
                 android:textColor="@color/gray_text">     
@@ -74,10 +63,81 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp" 
                 android:layout_alignParentBottom="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@color/gray">     
             </View>
     </RelativeLayout>
-    
+    <RelativeLayout 
+            android:id="@+id/btn_items"
+            android:layout_below="@id/btn_theme"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/setting_bg" >
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:text="财产条目"
+                android:textSize="17sp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/gray_text">     
+            </TextView>
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="1dp" 
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/gray">     
+            </View>
+    </RelativeLayout>
+    <RelativeLayout 
+            android:id="@+id/btn_plan"
+            android:layout_below="@id/btn_items"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/setting_bg" >
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:text="存钱目标"
+                android:textSize="17sp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/gray_text">     
+            </TextView>
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="1dp" 
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/gray">     
+            </View>
+    </RelativeLayout>
+    <RelativeLayout 
+            android:id="@+id/btn_about"
+            android:layout_below="@id/btn_plan"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/setting_bg" >
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:text="关于帮助"
+                android:textSize="17sp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/gray_text">     
+            </TextView>
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="1dp" 
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/gray">     
+            </View>
+    </RelativeLayout>
 </RelativeLayout>
