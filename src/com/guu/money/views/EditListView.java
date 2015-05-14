@@ -12,10 +12,15 @@ import android.widget.ListView;
 
 public class EditListView extends ListView {
 	private Context context;
+	private int editId = R.id.name;
 
 	public EditListView(Context context) {
 		super(context);
 		this.context = context;
+	}
+	
+	public void setEditId(int editId){
+		this.editId = editId;
 	}
 
 	public EditListView(Context context, AttributeSet attrs) {
@@ -32,7 +37,7 @@ public class EditListView extends ListView {
 				for (int i = 0; i < getChildCount(); i++) {
 					View view = getChildAt(i);
 					EditText editText = (EditText) view
-							.findViewById(R.id.name);
+							.findViewById(editId);
 					editText.clearFocus();
 				}
 			}

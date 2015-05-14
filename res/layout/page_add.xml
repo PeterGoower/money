@@ -16,4 +16,17 @@
         android:background="?attr/color_app"
         android:layout_alignParentTop="true"
         android:text="@string/home_add"/>
+    
+    <com.guu.money.views.EditListView
+        android:id="@+id/list"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:listSelector="@null" 
+        android:divider="@null"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/title"
+        android:cacheColorHint="@color/glass"
+        android:scrollbars="none">
+    </com.guu.money.views.EditListView>
 </RelativeLayout>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.avos.avoscloud.AVObject;
 import com.guu.money.R;
+import com.guu.money.listener.DeleteInListview;
 import com.guu.money.utils.Global;
 
 import android.content.Context;
@@ -13,22 +14,24 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
 public class ItemsAdapter extends BaseAdapter{
+	private DeleteInListview lis;
     private LayoutInflater mInflater;
     private List<AVObject> data;
     private Context context;
     
     private EditText name;
     private Button delete;
-    private Button add;
     
-    public ItemsAdapter(Context context, List<AVObject> data){
+    public ItemsAdapter(Context context, List<AVObject> data, DeleteInListview lis){
     	this.context = context;
         this.data = data;
+        this.lis = lis;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     
@@ -59,7 +62,12 @@ public class ItemsAdapter extends BaseAdapter{
 		convertView = mInflater.inflate(R.layout.view_items_item, null);
 		name = (EditText)convertView.findViewById(R.id.name);
 		delete = (Button)convertView.findViewById(R.id.delete);
-		add = (Button)convertView.findViewById(R.id.add);
+		delete.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				lis.onDelete(pos);
+			}
+		});
 		
 		final AVObject currAv = data.get(position);
 		name.setText(currAv.get(Global.DATA_NAME_NAME).toString());

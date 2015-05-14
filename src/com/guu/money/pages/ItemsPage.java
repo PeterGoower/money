@@ -8,6 +8,7 @@ import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.SaveCallback;
 import com.guu.money.R;
 import com.guu.money.adapter.ItemsAdapter;
+import com.guu.money.listener.DeleteInListview;
 import com.guu.money.listener.TipEvent;
 import com.guu.money.utils.Global;
 import com.guu.money.utils.Setting;
@@ -23,8 +24,10 @@ import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-public class ItemsPage extends BasePage implements TipEvent{
+public class ItemsPage extends BasePage implements TipEvent, DeleteInListview{
 	private final static int COMMIT_OK = 0;
+	private final static int DELETE_CONFIRM = 1;
+	private int deleteIndex = 0;
 	private EditListView list = null;
 	private RelativeLayout hintArea;
 	private Button tipHide;
@@ -46,7 +49,7 @@ public class ItemsPage extends BasePage implements TipEvent{
         
         list = (EditListView)findViewById(R.id.list);
         initData();
-        infoAdapter = new ItemsAdapter(this, data);
+        infoAdapter = new ItemsAdapter(this, data, this);
 		list.setAdapter(infoAdapter);
     }
     
@@ -93,17 +96,66 @@ public class ItemsPage extends BasePage implements TipEvent{
     
     @Override  
     public boolean onCreateOptionsMenu(Menu menu) {  
-        MenuItem edit = menu.add(0,0,0, this.getResources().getString(R.string.save));
-        edit.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         
+        MenuItem add = menu.add(0,0,0, this.getResources().getString(R.string.add));
+        add.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        MenuItem save = menu.add(0,1,1, this.getResources().getString(R.string.save));
+        save.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         return true;  
     }  
     
+    private void add(){
+    	int maxIndex = getMaxIndex();
+    	
+    	AVObject newone =  new AVObject(Global.DATA_TABLE_ITEMS);
+    	newone.put(Global.DATA_NAME_ID, System.currentTimeMillis());
+    	newone.put(Global.DATA_NAME_NAME, "");
+    	newone.put(Global.DATA_NAME_INDEX, maxIndex+1);
+    	
+    	newone.setACL(Global.currAcl);
+    	data.add(newone);
+    	infoAdapter.notifyDataSetChanged();
+    }
+    
+    private int getMaxIndex(){
+    	int max = 0;
+    	dataCount = data.size();
+    	for(int i=0;i<dataCount;i++){
+    		int currIndex = data.get(i).getInt(Global.DATA_NAME_INDEX);
+    		if(currIndex > max){
+    			max = currIndex;
+    		}
+    	}
+    	return max;
+    }
+    
     private void commit(){
     	dataCount = data.size();
+    	if(testDataOK(dataCount) == false){
+    		
+    		return;
+    	}
     	dataCommitPos = 0;
     	tip.showWaitting();
     	commitEach();
+    }
+    
+    private boolean testDataOK(int count){
+    	boolean ifOK = true;
+    	for(int i=0; i<count; i++){
+    		String name = data.get(i).getString(Global.DATA_NAME_NAME).trim();
+    		if(name.equals("") || name.length() < 1 || name == null){
+    			tip.showHint(R.string.item_name_null);
+    			ifOK = false;
+    			break;
+    		}
+    		if(name.equals(this.getResources().getString(R.string.other1)) || name.equals(this.getResources().getString(R.string.other2))){
+    			tip.showHint(R.string.item_name_other, 3000);
+    			ifOK = false;
+    			break;
+    		}
+    	}
+    	return ifOK;
     }
    
     private void commitEach(){
@@ -116,6 +168,7 @@ public class ItemsPage extends BasePage implements TipEvent{
     	            	dataCommitPos++;
     	            	commitEach();
     	            }else if(dataCommitPos == dataCount -1){
+    	            	AddPage.itemChanegFlag = true;
     	            	tip.dismissWaitting();
     	            	tip.showHint(R.string.item_save_ok);
     	            	tip.setEventTag(COMMIT_OK);
@@ -128,14 +181,30 @@ public class ItemsPage extends BasePage implements TipEvent{
     	    }
     	});	
     }
+    
+    @Override
+	public void onDelete(int index) {
+    	dataCount = data.size();
+    	if(dataCount == 1){
+    		tip.showHint(R.string.delete_one_hint);
+    		return;
+    	}
+    	
+    	tip.showChoose(R.string.delete_hint);
+    	tip.setEventTag(DELETE_CONFIRM);
+    	deleteIndex = index;
+	}  
   
     @Override  
     public boolean onOptionsItemSelected(MenuItem item) {  
         switch (item.getItemId()) {  
         case 0:  
+            add();
+            break; 
+            
+        case 1:  
             commit();
-            break;  
-        
+            break; 
         default:  
             break;  
         }  
@@ -151,13 +220,18 @@ public class ItemsPage extends BasePage implements TipEvent{
 
 	@Override
 	public void onChoose(int which, int eventTag) {
-		// TODO Auto-generated method stub
-		
+		if(eventTag == DELETE_CONFIRM && which == Tip.CHOOSE_RIGHT){
+			data.get(deleteIndex).deleteInBackground();
+	    	data.remove(deleteIndex);
+	    	Global.currItemData = data;
+	    	infoAdapter.notifyDataSetChanged();
+	    	AddPage.itemChanegFlag = true;
+		}
 	}
 
 	@Override
 	public void onConfirm(int eventTag) {
 		// TODO Auto-generated method stub
 		
-	}  
+	}
 }
