@@ -62,7 +62,7 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
     	for(int i=0; i<count; i++){
     		AVObject curr = Global.currItemData.get(i);
     		Items it = new Items();
-    		it.id = curr.getString(Global.DATA_NAME_ID);
+    		it.id = curr.get(Global.DATA_NAME_ID).toString();
     		it.name = curr.getString(Global.DATA_NAME_NAME);
     		it.content = "";
     		data.add(it);
@@ -91,11 +91,9 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
     	int count = data.size();
     	for(int i=0; i<count; i++){
     		Items currData = data.get(i);
-    		Log.d("Goower", i+" "+currData.id);
-    		Log.d("Goower", i+" "+currData.content);
-    		Log.d("Goower", i+" "+currData.name);
     		item.put(currData.id, currData.content);
     	}
+    	item.put("date", Utily.getShowTime());
         item.setACL(Global.currAcl);
         
     	item.saveInBackground(new SaveCallback() {

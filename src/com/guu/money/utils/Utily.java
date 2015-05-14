@@ -124,9 +124,9 @@ public class Utily {
 	/**
 	 * 绝对时间转为可显示在界面上的字符串，类似2012-11-12 12:30:05
 	 */
-	public static String getShowTime(long time)
+	public static String getShowTime()
     {
-		Date date = new Date(time);
+		Date date = new Date(System.currentTimeMillis());
         
         String year = String.valueOf(date.getYear()+1900);
         
@@ -136,30 +136,30 @@ public class Utily {
       	  monthString = "0" + month; 
         }
         
-        int day = date.getDate();
-        String dayString = String.valueOf(day);
-        if(day < 10){
-      	  dayString = "0" + day; 
-        }
-        
-        int hour = date.getHours();
-        String hourString = String.valueOf(hour);
-        if(hour < 10){
-      	  hourString = "0" + hour; 
-        }
-        
-        int min = date.getMinutes();
-        String minString = String.valueOf(min);
-        if(min < 10){
-      	  minString = "0" + min; 
-        }
-        
-        int sec = date.getSeconds();
-        String secString = String.valueOf(sec);
-        if(sec < 10){
-      	  secString = "0" + sec; 
-        }
-        return year+"-"+monthString+"-"+dayString+" "+hourString+":"+minString+":"+secString;
+//        int day = date.getDate();
+//        String dayString = String.valueOf(day);
+//        if(day < 10){
+//      	  dayString = "0" + day; 
+//        }
+//        
+//        int hour = date.getHours();
+//        String hourString = String.valueOf(hour);
+//        if(hour < 10){
+//      	  hourString = "0" + hour; 
+//        }
+//        
+//        int min = date.getMinutes();
+//        String minString = String.valueOf(min);
+//        if(min < 10){
+//      	  minString = "0" + min; 
+//        }
+//        
+//        int sec = date.getSeconds();
+//        String secString = String.valueOf(sec);
+//        if(sec < 10){
+//      	  secString = "0" + sec; 
+//        }
+        return year+"-"+monthString;
     }
 	
 	/** 

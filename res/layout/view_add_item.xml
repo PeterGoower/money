@@ -5,30 +5,29 @@
   android:layout_height="60dp">
   	<TextView
           android:id="@+id/name"
+          android:paddingBottom="10dp"
           android:layout_width="80dp"
           android:layout_height="50dp"
           android:layout_marginLeft="40dp"
           android:layout_alignParentLeft="true"
   	      android:layout_alignParentBottom="true"
-  	      android:layout_marginBottom="5dp"
-  	      android:gravity="center_vertical|left"
+  	      android:gravity="bottom|left"
   	      android:textColor="@color/gray_text"
   	      android:textSize="20sp">
-    </TextView>  
+    </TextView> 
+    
     <EditText
           android:id="@+id/content"
           android:paddingLeft="90dp"
-          android:paddingBottom="10dp"
           android:gravity="bottom"
           android:layout_width="match_parent"
           android:layout_height="100dp"
-          android:layout_marginTop="10dp"
           android:layout_marginLeft="40dp"
           android:layout_marginRight="40dp"
-  	      android:layout_centerVertical="true"
+  	      android:layout_alignParentBottom="true"
   	      android:textColor="?attr/color_app"
   	      android:textColorHint="@color/gray"
-  	      android:textSize="30sp">
+  	      android:textSize="40sp">
   	      <requestFocus></requestFocus>
     </EditText>  
 </RelativeLayout>
