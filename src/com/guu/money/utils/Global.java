@@ -22,7 +22,10 @@ public class Global {
 	public static final String DATA_NAME_INDEX = "money_index";  //字段：资产类型序号
 	
 	public static final String DATA_TABLE_MONTH = "month_data";
-	
+	public static final String DATA_MONTH_DATE = "month_date";
+	public static final String DATA_MONTH_TOTAL = "month_total";
+	public static final String DATA_MONTH_OTHER = "other";
+	public static final String DATA_MONTH_DESC = "desc";
 	
 	public static final String THEME_CURR = "theme_curr";  
 	public static final String ITEM_EDIT_HINT_HIDE = "item_edit_hint_hide";

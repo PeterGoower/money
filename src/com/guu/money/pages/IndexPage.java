@@ -24,7 +24,8 @@ public class IndexPage extends Fragment {
 		setBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+				Intent intent = new Intent(IndexPage.this.getActivity(), HisPage.class);
+		        startActivity(intent);
 			}
 		});
 

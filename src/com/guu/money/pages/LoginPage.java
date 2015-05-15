@@ -119,7 +119,7 @@ public class LoginPage extends BasePage implements OnClickListener, TipEvent{
         if (currentUser != null) {
         	loginYet = true;
         	login.setEnabled(false);
-        	initData();
+        	initData(true);
         } 
         timer = new Timer(true);
 		timer.schedule(task, 1000, 150); 
@@ -164,7 +164,7 @@ public class LoginPage extends BasePage implements OnClickListener, TipEvent{
 		}
 	};
 	
-	private void initData(){
+	private void initData(boolean first){
     	Global.currUser = AVUser.getCurrentUser();
     	Global.currAcl =  new AVACL();
     	Global.currAcl.setReadAccess(Global.currUser,true);
@@ -189,8 +189,11 @@ public class LoginPage extends BasePage implements OnClickListener, TipEvent{
     	    }
     	});
     	
-    	timer = new Timer(true);
-		timer.schedule(timeoutTask, 10000); 
+    	if(first){
+    		timer = new Timer(true);
+    		timer.schedule(timeoutTask, 10000); 
+    	}
+    	
     }
 	
 	private TimerTask timeoutTask = new TimerTask(){  
@@ -226,7 +229,7 @@ public class LoginPage extends BasePage implements OnClickListener, TipEvent{
     	        		initItemSave();
     	        	}else if(itemSaveIndexInit == itemCountInit - 1){
     	        		Log.d("Goower", "ok");
-    	        		initData();
+    	        		initData(false);
     	        	}
     	        }
     	    }
@@ -421,7 +424,7 @@ public class LoginPage extends BasePage implements OnClickListener, TipEvent{
 	        public void done(AVException e) {
 	        	
 	            if (e == null) {
-	            	initData();
+	            	initData(true);
 	            } else {
 	            	tip.dismissWaitting();
 	                switch (e.getCode()) {
@@ -450,7 +453,7 @@ public class LoginPage extends BasePage implements OnClickListener, TipEvent{
 			public void done(AVUser user, AVException e) {
 	        	
 	            if (e == null) {
-	            	initData();
+	            	initData(true);
 	            } else {
 	            	tip.dismissWaitting();
 	                tip.showHint(R.string.login_fail);

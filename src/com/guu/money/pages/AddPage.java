@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.SaveCallback;
 import com.guu.money.R;
 import com.guu.money.adapter.AddAdapter;
@@ -21,20 +23,28 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class AddPage extends BasePage implements ContentChange, TipEvent{
 	private final static int MONTH_SAVE_OK = 0;
 	private final static int MONTH_SAVE_FAIL = 1;
+	private final static int MONTH_SAVE_COVER = 2;
 	public static boolean itemChanegFlag = false;
 	private EditListView list = null;
 	private AddAdapter infoAdapter;
 	private List<Items> data;
 	private Tip tip = new Tip(this,this);
+	private String month;
+	private AVObject old = null;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.page_add);
+        
+        month = Utily.getShowTime();
+        TextView title = (TextView)findViewById(R.id.title);
+        title.setText(title.getText() + " (" + month + ")");
         
         itemChanegFlag = false;
         setData();
@@ -42,6 +52,54 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
         list.setEditId(R.id.content);
         infoAdapter = new AddAdapter(this, data, this);
 		list.setAdapter(infoAdapter);
+		
+		ifSaved();
+    }
+    
+    private void ifSaved(){
+    	AVQuery<AVObject> query = new AVQuery<AVObject>(Global.DATA_TABLE_MONTH);
+    	query.whereEqualTo(Global.DATA_MONTH_DATE, month);
+    	query.findInBackground(new FindCallback<AVObject>() {
+    		@Override
+    	    public void done(List<AVObject> avObjects, AVException e) {
+    	        if (e == null) {
+    	        	int count = avObjects.size();
+    	        	if(count != 0){
+    	        		old = avObjects.get(0);
+    	        		fillContent();
+    	        	}
+    	        }
+    	    }
+    	});
+    }
+    
+    private void fillContent(){
+    	int nameValue = 0;
+    	int total = old.getInt(Global.DATA_MONTH_TOTAL);
+    	int count = data.size();
+    	for(int i=0; i<count-2; i++){
+    		Items curr = data.get(i);
+    		String id = curr.id;
+    		if(old.get(id) != null){
+    			String value = old.get(id).toString();
+    			int valueInt = Integer.parseInt(value);
+    			curr.content = value;
+    			data.set(i, curr);
+    			nameValue = nameValue + valueInt;
+    		}
+    	}
+    	
+    	int other = total - nameValue;
+    	Items others = data.get(count-2);
+    	others.content = String.valueOf(other);
+    	data.set(count-2, others);
+    	
+    	Items desc = data.get(count-1);
+    	desc.content = old.getString(Global.DATA_MONTH_DESC);
+    	data.set(count-1, desc);
+    	
+    	infoAdapter.setData(data);
+    	infoAdapter.notifyDataSetChanged();
     }
     
     @Override
@@ -49,6 +107,9 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
         super.onResume();
         if(AddPage.itemChanegFlag){
         	setData();
+        	if(old != null){
+        		fillContent();
+        	}
         	infoAdapter.setData(data);
         	infoAdapter.notifyDataSetChanged();
         	AddPage.itemChanegFlag = false;
@@ -69,13 +130,13 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
     	}
     	
     	Items other = new Items();
-    	other.id = "other";
+    	other.id = Global.DATA_MONTH_OTHER;
     	other.name = this.getResources().getString(R.string.other1);
     	other.content = "";
 		data.add(other);
 		
 		Items desc = new Items();
-		desc.id = "desc";
+		desc.id = Global.DATA_MONTH_DESC;
 		desc.name = this.getResources().getString(R.string.desc);
 		desc.content = "";
 		data.add(desc);
@@ -89,11 +150,21 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
     	tip.showWaitting();
     	AVObject item = new AVObject(Global.DATA_TABLE_MONTH);
     	int count = data.size();
+    	int total = 0;
     	for(int i=0; i<count; i++){
     		Items currData = data.get(i);
-    		item.put(currData.id, currData.content);
+    		String currContent = currData.content;
+    		item.put(currData.id, currContent);
+    		if(i != count - 1){
+    		    int currContentInt = Integer.parseInt(currContent);
+    		    total = total + currContentInt;
+    		}
     	}
-    	item.put("date", Utily.getShowTime());
+    	item.put(Global.DATA_MONTH_TOTAL, total);
+    	item.put(Global.DATA_MONTH_DATE, month);
+    	if(old != null){
+    		item.setObjectId(old.getObjectId());
+    	}
         item.setACL(Global.currAcl);
         
     	item.saveInBackground(new SaveCallback() {
@@ -143,8 +214,14 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
         	Intent intent = new Intent(this, ItemsPage.class);
 	        startActivity(intent);
             break;  
-        case 1:  
-        	save();
+        case 1: 
+        	if(old == null){
+        		save();
+        	}else{
+        		tip.showChoose(R.string.save_month_cover);
+        		tip.setEventTag(MONTH_SAVE_COVER);
+        	}
+        	
             break;  
         default:  
             break;  
@@ -168,8 +245,9 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
 
 	@Override
 	public void onChoose(int which, int eventTag) {
-		// TODO Auto-generated method stub
-		
+		if(eventTag == MONTH_SAVE_COVER && which == Tip.CHOOSE_RIGHT){
+			save();
+		}
 	}
 
 	@Override

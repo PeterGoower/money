@@ -36,6 +36,8 @@
             android:name=".pages.ItemsPage"
             android:windowSoftInputMode="adjustPan" >
         </activity>
+        <activity android:name=".pages.HisPage" >
+        </activity>
     </application>
 
 </manifest>
