@@ -237,10 +237,21 @@ public class LoginPage extends BasePage implements OnClickListener, TipEvent{
     }
     
     private void fetchAllData(){
-    	Log.d("Goower", "data init ok");
+    	AVQuery<AVObject> query = new AVQuery<AVObject>(Global.DATA_TABLE_MONTH);
+    	query.whereNotEqualTo(Global.DATA_MONTH_DATE, "NULL");
+    	query.findInBackground(new FindCallback<AVObject>() {
+    		@Override
+    	    public void done(List<AVObject> avObjects, AVException e) {
+    	        if (e == null) {
+    	        	int count = avObjects.size();
+    	        	if(count != 0){
+    	        		Global.currMonthData = avObjects;
+    	        	}
+    	        }
+    	    }
+    	});
     	
-    	manageDataGot();//temp
-    	
+    	manageDataGot();
     }
     
     private void manageDataGot(){

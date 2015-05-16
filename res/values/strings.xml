@@ -55,4 +55,14 @@
     <string name="month_save_ok">月度数据提交成功！</string>
     <string name="month_save_fail">月度数据提交失败，请重试！</string>
     <string name="save_month_cover">本月份已有数据，再次保存将会覆盖原有数据，是否继续？</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="month_hint_null">本月木有记录</string>
+    <string name="nil">无</string>
+    <string name="edit">修改</string>
+    <string name="edit_month">记录修改</string>
+    <string name="total">总计</string>
+    <string name="delete">删除</string>
+    <string name="delete_fail">删除失败，请重试！</string>
+    <string name="delete_month_hint">真的要删除当前月份记录吗？</string>
 </resources>

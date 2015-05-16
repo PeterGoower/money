@@ -112,6 +112,10 @@ public class SettingPage extends Fragment implements OnClickListener, OnItemClic
 	public void onChoose(int which, int eventTag) {
 		if(eventTag == TIP_LOGOUT && which == Tip.CHOOSE_RIGHT){
 			AVUser.logOut();  
+			Global.currItemData = null;
+			Global.currMonthData = null;
+			Global.currUser = null;
+			Global.currAcl = null;
 			activity.finish();  
 	        activity.startActivity(new Intent(activity, LoginPage.class));  
 		}
