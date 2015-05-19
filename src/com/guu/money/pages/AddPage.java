@@ -46,7 +46,7 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
         Bundle bundle = this.getIntent().getExtras();
         if(bundle != null){
         	month = bundle.getString("edit_date");
-        	title.setText(month + this.getResources().getString(R.string.edit_month));
+        	title.setText(month + " "+ this.getResources().getString(R.string.edit_month));
         }else{
         	month = Utily.getShowTime();
         }
@@ -186,8 +186,12 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
     	boolean dataOk = true;
     	int countDigi = data.size() - 1;//备注不用限制填数字
     	for(int i=0; i<countDigi; i++){
-    		String curr = data.get(i).content.trim();
-    		if(curr == "" || !Utily.isNumeric(curr) || curr.length() < 1 || curr == null){
+    		Items it = data.get(i);
+    		String curr = it.content.trim();
+    		if(curr == "" || curr.length() < 1 || curr == null){
+    			it.content = "0";
+    			data.set(i, it);
+    		}else if(!Utily.isNumeric(curr)){
     			tip.showHint(R.string.content_null);
     			dataOk = false;
     			break;

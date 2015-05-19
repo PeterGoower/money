@@ -19,6 +19,7 @@ import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class AddAdapter extends BaseAdapter{
@@ -74,18 +75,14 @@ public class AddAdapter extends BaseAdapter{
 		if(position == count - 1){
 			content.setHint(context.getResources().getString(R.string.desc_hint));
 			content.setTextSize(20);
-			content.setPadding(content.getPaddingLeft(), content.getPaddingTop(), 
+			content.setPadding(content.getPaddingLeft(), Utily.dip2px(context, 30), 
 					content.getPaddingRight(), Utily.dip2px(context, 10));
-			AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, Utily.dip2px(context, 100));
-            convertView.setLayoutParams(lp);
+
 		}else{
 			
 			content.setKeyListener(new
 					DigitsKeyListener(false,true));
-			AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, Utily.dip2px(context, 60));
-            convertView.setLayoutParams(lp);
+			
 		}
 		
 		content.addTextChangedListener(new TextWatcher() {

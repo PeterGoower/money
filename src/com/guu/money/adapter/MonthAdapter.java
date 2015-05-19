@@ -65,18 +65,13 @@ public class MonthAdapter extends BaseAdapter{
 		if(position == count - 1){
 			content.setHint(context.getResources().getString(R.string.nil));
 			content.setTextSize(20);
-			content.setPadding(content.getPaddingLeft(), content.getPaddingTop(), 
+			content.setPadding(content.getPaddingLeft(), Utily.dip2px(context, 20), 
 					content.getPaddingRight(), Utily.dip2px(context, 10));
-			AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, Utily.dip2px(context, 100));
-            convertView.setLayoutParams(lp);
+			
 		}else{
 			
 			content.setKeyListener(new
 					DigitsKeyListener(false,true));
-			AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, Utily.dip2px(context, 60));
-            convertView.setLayoutParams(lp);
 		}
 		
 		return convertView;

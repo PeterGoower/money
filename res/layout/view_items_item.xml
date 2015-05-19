@@ -13,6 +13,9 @@
   	      android:singleLine="true"
   	      android:layout_centerVertical="true"
   	      android:textColor="@color/gray_text"
+  	      android:background="@null"
+  	      android:textColorHint="@color/gray"
+  	      android:hint="@string/input_item"
   	      android:textSize="18sp">
   	      <requestFocus></requestFocus>
     </EditText>  
@@ -23,5 +26,14 @@
           android:layout_centerVertical="true"
           android:layout_alignParentRight="true"
           android:layout_marginRight="40dp"
-          android:background="@drawable/delete_icon"/>  
+          android:background="@drawable/delete_icon"/> 
+    <View
+          
+          android:layout_width="match_parent"
+          android:layout_height="1px"
+          android:layout_marginLeft="40dp"
+          android:layout_marginRight="40dp"
+  	      android:layout_alignParentBottom="true"
+  	      android:background="?attr/color_app">
+    </View>   
 </RelativeLayout>
