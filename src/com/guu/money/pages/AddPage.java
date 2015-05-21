@@ -131,7 +131,6 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
     		Items currData = data.get(i);
     		String currContent = currData.content;
     		item.put(currData.id, currContent);
-    		Log.d("Goower", currData.id +"/"+currContent );
     		if(i != count - 1){
     		    int currContentInt = Integer.parseInt(currContent);
     		    total = total + currContentInt;
@@ -150,7 +149,6 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
     	        	
     	        } else {
     	        	tip.dismissWaitting();
-    	        	Log.d("Goower","saveNew " + e);
     	        	tip.showHint(R.string.month_save_fail);
     	        	tip.setEventTag(MONTH_SAVE_FAIL);
     	        }
@@ -169,12 +167,12 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
     	        if (e == null) {
     	        	int count = avObjects.size();
     	        	if(count != 0){
+    	        		Global.dataChange = true;
     	        		Global.currMonthData = avObjects;
     	        		tip.showHint(R.string.month_save_ok);
         	        	tip.setEventTag(MONTH_SAVE_OK);
     	        	}
     	        }else{
-    	        	Log.d("Goower","loadNew");
     	        	tip.showHint(R.string.month_save_fail);
     	        	tip.setEventTag(MONTH_SAVE_FAIL);
     	        }

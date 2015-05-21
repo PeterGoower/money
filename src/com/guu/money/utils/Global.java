@@ -13,10 +13,13 @@ import com.guu.money.R;
 
 
 public class Global {
+	public static boolean dataChange = true;
+	
 	public static AVUser currUser;//当前登录用户
 	public static AVACL currAcl;//当前登录用户权限
 	public static List<AVObject> currItemData;//当前用户的资产类型数据
 	public static List<AVObject> currMonthData;//当前用户的分月数据
+	public static int currPlan = 10000;//当前存钱计划
 	
 	public static final String DATA_TABLE_ITEMS = "money_items";  //资产类型表
 	public static final String DATA_NAME_ID = "money_id";  //字段：资产类型ID
@@ -28,6 +31,12 @@ public class Global {
 	public static final String DATA_MONTH_TOTAL = "month_total";
 	public static final String DATA_MONTH_OTHER = "other";
 	public static final String DATA_MONTH_DESC = "desc";
+	
+	public static final String DATA_TABLE_SETTING = "setting_data";
+	public static final String DATA_SETTING_INT = "int_value";
+	public static final String DATA_SETTING_STRING = "string_value";
+	public static final String DATA_SETTING_KEY = "key";
+	public static final String DATA_SETTING_VALUE_PLAN = "plan";
 	
 	public static final String THEME_CURR = "theme_curr";  
 	public static final String ITEM_EDIT_HINT_HIDE = "item_edit_hint_hide";

@@ -49,7 +49,7 @@
             android:id="@+id/num1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" 
-            android:text="100000"
+            android:text="0"
             android:textSize="80sp"
             android:layout_below="@id/lab0"
             android:layout_centerHorizontal="true"
@@ -75,11 +75,11 @@
                 android:id="@+id/num3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" 
-                android:text="25%"
+                android:text="..."
                 android:textSize="30sp"
                 android:layout_below="@id/lab3"
                 android:layout_centerHorizontal="true"
-                android:textColor="#86ac23">     
+                android:textColor="#2796de">     
             </TextView>
         </RelativeLayout>
         <RelativeLayout 
@@ -103,7 +103,7 @@
                 android:id="@+id/num2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" 
-                android:text="5236"
+                android:text="..."
                 android:textSize="30sp"
                 android:layout_below="@id/lab2"
                 android:layout_centerHorizontal="true"
@@ -131,11 +131,11 @@
                 android:id="@+id/num4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" 
-                android:text="5500"
+                android:text="..."
                 android:textSize="30sp"
                 android:layout_below="@id/lab4"
                 android:layout_centerHorizontal="true"
-                android:textColor="#2796de">     
+                android:textColor="#86ac23">     
             </TextView>
         </RelativeLayout>
     </RelativeLayout>

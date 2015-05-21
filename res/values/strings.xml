@@ -66,4 +66,13 @@
     <string name="delete_fail">删除失败，请重试!</string>
     <string name="delete_month_hint">真的要删除当前月份记录吗？</string>
     <string name="input_item">输入类别名称</string>
+    <string name="logout">账号注销</string>
+    <string name="theme_color">颜色主题</string>
+    <string name="plan">存钱目标</string>
+    <string name="plan_input">点此输入</string>
+    <string name="ask_logout">真的要注销账号吗？</string>
+    <string name="items">财产类别</string>
+    <string name="feedback">意见反馈</string>
+    <string name="about">关于帮助</string>
+    <string name="edit_fail">修改失败</string>
 </resources>

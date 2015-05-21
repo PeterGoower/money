@@ -98,7 +98,7 @@ public class HisPage extends BasePage implements TipEvent{
         	    	tip.dismissWaitting();
         	        if (e == null) {
         	        	Global.currMonthData.remove(index);
-        	        	
+        	        	Global.dataChange = true;
         	        	initView(); 
         	            
         	            viewPager.setAdapter(pagerAdapter);  

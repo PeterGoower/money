@@ -20,7 +20,7 @@
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="?attr/color_app"
+        android:textColor="@color/gray"
         android:text="@string/month_hint_null"
         android:visibility="invisible"
         android:textSize="20sp">
