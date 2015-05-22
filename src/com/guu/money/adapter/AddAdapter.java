@@ -14,12 +14,10 @@ import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class AddAdapter extends BaseAdapter{
@@ -31,6 +29,7 @@ public class AddAdapter extends BaseAdapter{
     private EditText content;
     private int count = 0;
     private ContentChange lis;
+    private int selectPosition=-1;
     
     public AddAdapter(Context context, List<Items> data, ContentChange lis){
     	this.context = context;
@@ -72,6 +71,7 @@ public class AddAdapter extends BaseAdapter{
 		Items it = data.get(position);
 		name.setText(it.name);
 		content.setText(it.content);
+
 		if(position == count - 1){
 			content.setHint(context.getResources().getString(R.string.desc_hint));
 			content.setTextSize(20);
@@ -79,11 +79,23 @@ public class AddAdapter extends BaseAdapter{
 					content.getPaddingRight(), Utily.dip2px(context, 10));
 
 		}else{
-			
 			content.setKeyListener(new
 					DigitsKeyListener(false,true));
-			
 		}
+		
+		content.setFocusable(true);   
+		content.setFocusableInTouchMode(true);
+		
+		if(selectPosition == position){  
+			content.requestFocus();  
+        } 
+		
+		content.setOnFocusChangeListener(new OnFocusChangeListener() {  
+            @Override  
+            public void onFocusChange(View v, boolean hasFocus) {
+                selectPosition = pos;  
+            }  
+        }); 
 		
 		content.addTextChangedListener(new TextWatcher() {
 			@Override

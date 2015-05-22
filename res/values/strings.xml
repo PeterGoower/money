@@ -75,4 +75,5 @@
     <string name="feedback">意见反馈</string>
     <string name="about">关于帮助</string>
     <string name="edit_fail">修改失败</string>
+    <string name="line_hint_null">暂无趋势数据</string>
 </resources>

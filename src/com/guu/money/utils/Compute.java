@@ -13,13 +13,17 @@ import com.guu.money.listener.ComputDataEvent;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 public class Compute implements Runnable{
 	private ComputDataEvent lis;
 	private Handler mHandler;
 	private List<Month> data;
 	private int total;
+	private int recent;
+	private int average;
 	private int precent;
+	private int[] currs;
 	
 	public Compute(ComputDataEvent lis){
 		   this.lis = lis;
@@ -30,10 +34,10 @@ public class Compute implements Runnable{
 			public void handleMessage(Message msg) {
 				super.handleMessage(msg);
 				if(msg.what == 0){
-					Compute.this.lis.onDataGot(total);
+					Compute.this.lis.onDataGot(String.valueOf(total), String.valueOf(recent), String.valueOf(average), currs);
                 	return;
                 }else if(msg.what == 1){
-                	Compute.this.lis.onPrecentGot(precent);
+                	Compute.this.lis.onPrecentGot(precent + "%");
                 }
                 
 			}
@@ -46,26 +50,65 @@ public class Compute implements Runnable{
 	
 	@Override
 	public void run() {
-        
+		try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace(); 
+        }
 		
 		total = 0;
+		recent = 0;
+		average = 0;
+		precent = 0;
+		currs = null;
+		
 		data = new ArrayList<Month>();
+		if(Global.currMonthData == null){
+			
+			showInfos();
+			getPrecent();
+			return;
+		}
+		
 		int count = Global.currMonthData.size();
+		
+		if(count < 2){
+			if(count == 1){
+				total = Global.currMonthData.get(0).getInt(Global.DATA_MONTH_TOTAL);
+				currs = new int[1];
+				currs[0] = total;
+			}
+			
+			showInfos();
+			getPrecent();
+			return;
+		}
+		
 		for(int i=0; i<count; i++){
 			Month mon = new Month();
 			mon.av = Global.currMonthData.get(i);
-			total = total + Global.currMonthData.get(i).getInt(Global.DATA_MONTH_TOTAL);
 			data.add(mon);
 		}
 		Collections.sort(data);
 		
+		currs = new int[count];
+		int[] diffs = new int[count-1];
 		
-		Global.dataChange = false;
-		Message msg = Message.obtain();
-        msg.what = 0;
-		msg.obj = null;
-		mHandler.sendMessage(msg);
+		for(int i=0; i<count; i++){
+			currs[i] = data.get(i).av.getInt(Global.DATA_MONTH_TOTAL);
+			if(i > 0){
+				diffs[i-1] = currs[i]-currs[i-1];
+			}
+			if(i == count-1){
+				total = currs[i];
+				average = total - currs[0];
+			}
+		}
 		
+		recent = diffs[count-1-1];
+		average = average/(count-1);
+		
+		showInfos();
 		getPrecent();
 	}
 	
@@ -82,11 +125,7 @@ public class Compute implements Runnable{
     	        	}else{
     	        		int plan = avObjects.get(0).getInt(Global.DATA_SETTING_INT);
     	        		Global.currPlan = plan;
-    	        		precent = total*100/plan;
-    	        		Message msg = Message.obtain();
-    	                msg.what = 1;
-    	        		msg.obj = null;
-    	        		mHandler.sendMessage(msg);
+    	        		showPrecent(plan);
     	        	}
     	        }else{
     	        	setPlan();
@@ -96,18 +135,36 @@ public class Compute implements Runnable{
 	}
 	
 	private void setPlan(){
-		precent = total*100/10000;;
 		Global.currPlan = 10000;
+		showPrecent(10000);
     	AVObject item = new AVObject(Global.DATA_TABLE_SETTING);
     	item.put(Global.DATA_SETTING_KEY, Global.DATA_SETTING_VALUE_PLAN);
     	item.put(Global.DATA_SETTING_INT, 10000);
         item.setACL(Global.currAcl);
     	item.saveInBackground();
-    	Message msg = Message.obtain();
+    }
+	
+	private void showInfos(){
+		Global.dataChange = false;
+		Message msg = Message.obtain();
+        msg.what = 0;
+		msg.obj = null;
+		mHandler.sendMessage(msg);
+	}
+	
+	private void showPrecent(int plan){
+		precent = total*100/plan;
+		if(precent == 0 && total > 0){
+			precent = 1;
+		}
+        if(precent == 100 && total < plan){
+        	precent = 99;
+		}
+		Message msg = Message.obtain();
         msg.what = 1;
 		msg.obj = null;
 		mHandler.sendMessage(msg);
-    }
+	}
 	
 	public class Month implements Comparable<Month>{
 		public AVObject av;

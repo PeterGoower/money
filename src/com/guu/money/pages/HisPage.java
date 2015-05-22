@@ -50,8 +50,9 @@ public class HisPage extends BasePage implements TipEvent{
     public void onResume() {
         super.onResume();
         initView(); 
-        
-        viewPager.setAdapter(pagerAdapter);  
+        HisAdapter adapter = new HisAdapter();
+        viewPager.setAdapter(adapter); 
+        adapter.notifyDataSetChanged();
         viewPager.setCurrentItem(currPos);  
     }
     
@@ -101,8 +102,10 @@ public class HisPage extends BasePage implements TipEvent{
         	        	Global.dataChange = true;
         	        	initView(); 
         	            
-        	            viewPager.setAdapter(pagerAdapter);  
-        	            viewPager.setCurrentItem(currPos);  
+        	            HisAdapter adapter = new HisAdapter();
+        	            viewPager.setAdapter(adapter);  
+        	            adapter.notifyDataSetChanged();
+        	            viewPager.setCurrentItem(currPos);
         	        } else {
         	        	tip.showHint(R.string.delete_fail);
         	        }
@@ -111,7 +114,7 @@ public class HisPage extends BasePage implements TipEvent{
         }
     }
     
-    private PagerAdapter pagerAdapter = new PagerAdapter() {  
+    private class HisAdapter extends PagerAdapter{  
     	  
         @Override  
         public boolean isViewFromObject(View arg0, Object arg1) {  

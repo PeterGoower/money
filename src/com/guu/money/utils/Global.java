@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.widget.TextView;
 
 import com.avos.avoscloud.AVACL;
 import com.avos.avoscloud.AVObject;
@@ -14,6 +15,10 @@ import com.guu.money.R;
 
 public class Global {
 	public static boolean dataChange = true;
+	public static String totalTemp = "0";
+	public static String recentTemp = "...";
+	public static String progressTemp = "...";
+	public static String averageTemp = "...";
 	
 	public static AVUser currUser;//当前登录用户
 	public static AVACL currAcl;//当前登录用户权限

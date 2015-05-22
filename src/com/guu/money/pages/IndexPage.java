@@ -26,15 +26,23 @@ public class IndexPage extends Fragment implements ComputDataEvent{
 	private TextView average;
 	
 	private Compute com = new Compute(this);
+	private boolean dataGot = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     	View indexView = inflater.inflate(R.layout.page_home, container, false);
     	
+    	dataGot = true;
+    	
     	total = (TextView) indexView.findViewById(R.id.num1);
     	recent = (TextView) indexView.findViewById(R.id.num2);
     	progress = (TextView) indexView.findViewById(R.id.num3);
     	average = (TextView) indexView.findViewById(R.id.num4);
+    	
+    	total.setText(Global.totalTemp);
+    	recent.setText(Global.recentTemp);
+    	progress.setText(Global.progressTemp);
+    	average.setText(Global.averageTemp);
     	
     	hisBtn = (Button) indexView.findViewById(R.id.btn1);
     	hisBtn.setOnClickListener(new OnClickListener() {
@@ -69,19 +77,27 @@ public class IndexPage extends Fragment implements ComputDataEvent{
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("Goower", Global.dataChange + "");
-        if(Global.dataChange == true){
+        if(Global.dataChange == true || dataGot == true){
         	com.start();
         }
+        dataGot = false;
     }
 
 	@Override
-	public void onDataGot(int totalValue) {
-		total.setText(String.valueOf(totalValue));
+	public void onDataGot(String totalValue, String recentValue, String averageValue, int[] monTotal) {
+		Global.totalTemp = totalValue;
+		total.setText(totalValue);
+		
+		Global.recentTemp = recentValue;
+		recent.setText(recentValue);
+		
+		Global.averageTemp = averageValue;
+		average.setText(averageValue);
 	}
 	
 	@Override
-	public void onPrecentGot(int precent) {
-		progress.setText(String.valueOf(precent) + "%");
+	public void onPrecentGot(String precent) {
+		Global.progressTemp = String.valueOf(precent);
+		progress.setText(Global.progressTemp);
 	}
 }

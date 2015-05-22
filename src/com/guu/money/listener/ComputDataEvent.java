@@ -2,7 +2,7 @@ package com.guu.money.listener;
 
 public interface ComputDataEvent {
 
-	public void onDataGot(int total);
+	public void onDataGot(String total, String recent, String average, int[] monTotal);
 	
-	public void onPrecentGot(int precent);
+	public void onPrecentGot(String precent);
 }

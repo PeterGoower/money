@@ -231,6 +231,10 @@ public class SettingPage extends Fragment implements OnClickListener, OnItemClic
 			Global.currMonthData = null;
 			Global.currUser = null;
 			Global.currAcl = null;
+			Global.totalTemp = "0";
+			Global.recentTemp = "...";
+			Global.progressTemp = "...";
+			Global.averageTemp = "...";
 			activity.finish();  
 	        activity.startActivity(new Intent(activity, LoginPage.class));  
 		}

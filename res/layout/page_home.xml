@@ -194,6 +194,15 @@
                 android:layout_marginRight="25dp"
                 android:background="@color/gray">     
             </View>
+            <TextView
+                android:id="@+id/line_hint"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:text="@string/line_hint_null"
+                android:textSize="18sp">
+            </TextView>
     </RelativeLayout>
     
 </RelativeLayout>
