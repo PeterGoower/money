@@ -37,8 +37,6 @@ public class AddAdapter extends BaseAdapter{
     private TextView name;
     private int count = 0;
     private ContentChange lis;
-    private EditText currView = null;
-    private boolean flag = false;
     
     public AddAdapter(Context context, List<Items> data, ContentChange lis){
     	this.context = context;
@@ -100,14 +98,10 @@ public class AddAdapter extends BaseAdapter{
             	
             	if(hasFocus){
             		Log.d("Goower", "focus:"+pos);
-            		if(flag == false){
-            			v.clearFocus();
-                		delaySetFocus(content);
-            		}
+            		
             		
             	}else{
             		Log.d("Goower", "lost:"+pos);
-            		flag = false;
             	}
             	
             }  
@@ -136,36 +130,4 @@ public class AddAdapter extends BaseAdapter{
 		
 		return convertView;
     }
-    
-    private void delaySetFocus(EditText v){
-    	Log.d("Goower", "delaySetFocus:");
-    	flag = true;
-    	currView = v;
-    	TimerTask task = new TimerTask(){  
-    		public void run() { 
-    			
-    			Message msg = Message.obtain();
-    			msg.what = 0;
-    			msg.obj = null;
-    			mHandler.sendMessage(msg);
-    			this.cancel();
-    	    }  
-    	};
-    	
-    	Timer timer = new Timer(true);
-		timer.schedule(task, 500);
-    }
-    
-	
-    private Handler mHandler = new Handler(){
-		
-		@Override
-		public void handleMessage(Message msg) {
-			super.handleMessage(msg);
-			if(msg.what == 0){
-				Log.d("Goower", "handleMessage:");
-				currView.requestFocus();
-            }
-		}
-	};
 }
