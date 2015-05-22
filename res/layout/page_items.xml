@@ -47,7 +47,7 @@
             android:text="@string/no_more"/>
     </RelativeLayout>
     
-    <com.guu.money.views.EditListView
+    <ListView
         android:id="@+id/list"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -57,5 +57,5 @@
         android:layout_below="@id/tip"
         android:cacheColorHint="@color/glass"
         android:scrollbars="none">
-    </com.guu.money.views.EditListView>
+    </ListView>
 </RelativeLayout>

@@ -12,7 +12,6 @@ import com.guu.money.listener.DeleteInListview;
 import com.guu.money.listener.TipEvent;
 import com.guu.money.utils.Global;
 import com.guu.money.utils.Setting;
-import com.guu.money.views.EditListView;
 import com.guu.money.views.Tip;
 
 import android.os.Bundle;
@@ -22,13 +21,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 public class ItemsPage extends BasePage implements TipEvent, DeleteInListview{
 	private final static int COMMIT_OK = 0;
 	private final static int DELETE_CONFIRM = 1;
 	private int deleteIndex = 0;
-	private EditListView list = null;
+	private ListView list = null;
 	private RelativeLayout hintArea;
 	private Button tipHide;
 	private ItemsAdapter infoAdapter;
@@ -47,7 +47,7 @@ public class ItemsPage extends BasePage implements TipEvent, DeleteInListview{
         manageHint();
        
         
-        list = (EditListView)findViewById(R.id.list);
+        list = (ListView)findViewById(R.id.list);
         initData();
         infoAdapter = new ItemsAdapter(this, data, this);
 		list.setAdapter(infoAdapter);

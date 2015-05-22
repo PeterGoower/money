@@ -15,7 +15,6 @@ import com.guu.money.listener.TipEvent;
 import com.guu.money.utils.Global;
 import com.guu.money.utils.Items;
 import com.guu.money.utils.Utily;
-import com.guu.money.views.EditListView;
 import com.guu.money.views.Tip;
 
 import android.content.Intent;
@@ -23,6 +22,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class AddPage extends BasePage implements ContentChange, TipEvent{
@@ -30,7 +30,7 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
 	private final static int MONTH_SAVE_FAIL = 1;
 	private final static int MONTH_SAVE_COVER = 2;
 	public static boolean itemChanegFlag = false;
-	private EditListView list = null;
+	private ListView list = null;
 	private AddAdapter infoAdapter;
 	private List<Items> data;
 	private Tip tip = new Tip(this,this);
@@ -53,8 +53,7 @@ public class AddPage extends BasePage implements ContentChange, TipEvent{
         
         itemChanegFlag = false;
         data = Global.getItemsData(this, false);
-        list = (EditListView)findViewById(R.id.list);
-        list.setEditId(R.id.content);
+        list = (ListView)findViewById(R.id.list);
         infoAdapter = new AddAdapter(this, data, this);
 		list.setAdapter(infoAdapter);
 		

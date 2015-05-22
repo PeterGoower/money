@@ -7,14 +7,17 @@ import com.guu.money.listener.ContentChange;
 import com.guu.money.utils.Items;
 import com.guu.money.utils.Utily;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -86,16 +89,29 @@ public class AddAdapter extends BaseAdapter{
 		content.setFocusable(true);   
 		content.setFocusableInTouchMode(true);
 		
-		if(selectPosition == position){  
-			content.requestFocus();  
-        } 
 		
-		content.setOnFocusChangeListener(new OnFocusChangeListener() {  
-            @Override  
-            public void onFocusChange(View v, boolean hasFocus) {
-                selectPosition = pos;  
-            }  
-        }); 
+		
+//		content.setOnFocusChangeListener(new OnFocusChangeListener() {  
+//            @Override  
+//            public void onFocusChange(View v, boolean hasFocus) {
+//            	
+//            	if(hasFocus){
+//            		selectPosition = pos;  
+//            		content.requestFocus();
+//                    InputMethodManager imm = ( InputMethodManager ) v.getContext( ).getSystemService( Context.INPUT_METHOD_SERVICE );     
+//                    
+//                    imm.showSoftInput(v,InputMethodManager.SHOW_FORCED);  
+//                    
+//            		
+//            	}else{
+//            		InputMethodManager imm = ( InputMethodManager ) v.getContext( ).getSystemService( Context.INPUT_METHOD_SERVICE );     
+//                    if ( imm.isActive( ) ) {     
+//                        imm.hideSoftInputFromWindow( v.getApplicationWindowToken( ) , 0 ); 
+//                    }   
+//            	}
+//                
+//            }  
+//        }); 
 		
 		content.addTextChangedListener(new TextWatcher() {
 			@Override
