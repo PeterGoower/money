@@ -30,7 +30,8 @@
         </activity>
         <activity android:name=".pages.HomePage" >
         </activity>
-        <activity android:name=".pages.AddPage" >
+        <activity android:name=".pages.AddPage" 
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity 
             android:name=".pages.ItemsPage"

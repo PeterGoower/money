@@ -1,14 +1,20 @@
 package com.guu.money.adapter;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.guu.money.R;
 import com.guu.money.listener.ContentChange;
+import com.guu.money.pages.HisPage;
+import com.guu.money.pages.IndexPage;
 import com.guu.money.utils.Items;
 import com.guu.money.utils.Utily;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -16,8 +22,8 @@ import android.text.method.DigitsKeyListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
-import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -29,10 +35,10 @@ public class AddAdapter extends BaseAdapter{
     private Context context;
     
     private TextView name;
-    private EditText content;
     private int count = 0;
     private ContentChange lis;
-    private int selectPosition=-1;
+    private EditText currView = null;
+    private boolean flag = false;
     
     public AddAdapter(Context context, List<Items> data, ContentChange lis){
     	this.context = context;
@@ -69,7 +75,7 @@ public class AddAdapter extends BaseAdapter{
     	
 		convertView = mInflater.inflate(R.layout.view_add_item, null);
 		name = (TextView)convertView.findViewById(R.id.name);
-		content = (EditText)convertView.findViewById(R.id.content);
+		final EditText content = (EditText)convertView.findViewById(R.id.content);
 		
 		Items it = data.get(position);
 		name.setText(it.name);
@@ -86,32 +92,26 @@ public class AddAdapter extends BaseAdapter{
 					DigitsKeyListener(false,true));
 		}
 		
-		content.setFocusable(true);   
-		content.setFocusableInTouchMode(true);
 		
 		
-		
-//		content.setOnFocusChangeListener(new OnFocusChangeListener() {  
-//            @Override  
-//            public void onFocusChange(View v, boolean hasFocus) {
-//            	
-//            	if(hasFocus){
-//            		selectPosition = pos;  
-//            		content.requestFocus();
-//                    InputMethodManager imm = ( InputMethodManager ) v.getContext( ).getSystemService( Context.INPUT_METHOD_SERVICE );     
-//                    
-//                    imm.showSoftInput(v,InputMethodManager.SHOW_FORCED);  
-//                    
-//            		
-//            	}else{
-//            		InputMethodManager imm = ( InputMethodManager ) v.getContext( ).getSystemService( Context.INPUT_METHOD_SERVICE );     
-//                    if ( imm.isActive( ) ) {     
-//                        imm.hideSoftInputFromWindow( v.getApplicationWindowToken( ) , 0 ); 
-//                    }   
-//            	}
-//                
-//            }  
-//        }); 
+		content.setOnFocusChangeListener(new OnFocusChangeListener() {  
+            @Override  
+            public void onFocusChange(View v, boolean hasFocus) {
+            	
+            	if(hasFocus){
+            		Log.d("Goower", "focus:"+pos);
+            		if(flag == false){
+            			v.clearFocus();
+                		delaySetFocus(content);
+            		}
+            		
+            	}else{
+            		Log.d("Goower", "lost:"+pos);
+            		flag = false;
+            	}
+            	
+            }  
+        }); 
 		
 		content.addTextChangedListener(new TextWatcher() {
 			@Override
@@ -136,4 +136,36 @@ public class AddAdapter extends BaseAdapter{
 		
 		return convertView;
     }
+    
+    private void delaySetFocus(EditText v){
+    	Log.d("Goower", "delaySetFocus:");
+    	flag = true;
+    	currView = v;
+    	TimerTask task = new TimerTask(){  
+    		public void run() { 
+    			
+    			Message msg = Message.obtain();
+    			msg.what = 0;
+    			msg.obj = null;
+    			mHandler.sendMessage(msg);
+    			this.cancel();
+    	    }  
+    	};
+    	
+    	Timer timer = new Timer(true);
+		timer.schedule(task, 500);
+    }
+    
+	
+    private Handler mHandler = new Handler(){
+		
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			if(msg.what == 0){
+				Log.d("Goower", "handleMessage:");
+				currView.requestFocus();
+            }
+		}
+	};
 }
