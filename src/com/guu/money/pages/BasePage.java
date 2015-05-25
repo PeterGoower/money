@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 
 public class BasePage extends Activity{
 	protected AVUser me;
@@ -18,13 +19,7 @@ public class BasePage extends Activity{
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bar = getActionBar();
-		if(bar != null){
-			bar.setDisplayOptions(0);
-			ActionBarProxy.setActionBarViewCollapsable(bar, true);
-			
-			bar.setSplitBackgroundDrawable(new ColorDrawable(this.getResources().getColor(R.color.dark)));
-		}
+        requestWindowFeature(Window.FEATURE_NO_TITLE); 
         
         Global.setTheme(this); 
         
@@ -32,10 +27,5 @@ public class BasePage extends Activity{
         StatusBarProxy.setImmersedWindow(getWindow(), true);
         
         me = AVUser.getCurrentUser();
-        
-        int paddingBottom = ActionBarProxy.getSmartBarHeight(this, getActionBar());
-        View contentView = findViewById(android.R.id.content);
-        contentView.setPadding(contentView.getPaddingLeft(), contentView.getPaddingTop(), contentView.getPaddingRight(), paddingBottom);
-        
    }
 }

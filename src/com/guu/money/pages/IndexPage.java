@@ -30,7 +30,7 @@ public class IndexPage extends Fragment implements ComputDataEvent{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	View indexView = inflater.inflate(R.layout.page_home, container, false);
+    	View indexView = inflater.inflate(R.layout.page_index, container, false);
     	
     	dataGot = true;
     	
