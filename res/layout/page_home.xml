@@ -4,8 +4,16 @@
     android:layout_height="fill_parent"
     android:background="@color/gray">
     
+    <RelativeLayout android:id="@+id/menu"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_alignParentBottom="true"
+    android:background="@color/dark">
     
+    
+    </RelativeLayout>
     <FrameLayout 
+        android:layout_above="@id/menu"
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >     
